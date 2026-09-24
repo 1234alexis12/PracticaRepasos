@@ -1,0 +1,176 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 03: EL MODELO DE CAJAS (BOX MODEL) EN CSS
+  =============================================================================
+  
+  ¡ESTE ES EL CONCEPTO MÁS IMPORTANTE DE TODO CSS!
+  Todo elemento en una página web es interpretado por el navegador como una CAJA RECTANGULAR.
+  
+  Una caja de CSS tiene 4 capas concéntricas (de adentro hacia afuera):
+  
+      +------------------------------------------+  <- Margen Exterior (Margin)
+      |                MARGIN                    |  (Espacio vacío que separa de otros elementos)
+      |   +----------------------------------+   |
+      |   |            BORDER                |   |  <- Borde (Línea que enmarca la caja)
+      |   |   +--------------------------+   |   |
+      |   |   |        PADDING           |   |   |  <- Relleno Interior (Colchón entre contenido y borde)
+      |   |   |   +------------------+   |   |   |
+      |   |   |   |     CONTENT      |   |   |   |  <- Contenido Real (Texto, imágenes, etc.)
+      |   |   |   | (width x height) |   |   |   |
+      |   |   |   +------------------+   |   |   |
+      |   |   +--------------------------+   |   |
+      |   +----------------------------------+   |
+      +------------------------------------------+
+
+  PROPIEDAD MÁGICA: `box-sizing: border-box;`
+  - Por defecto (`content-box`): Si pones width: 200px y luego agregas padding: 20px y border: 5px,
+    el ancho real total de la caja en pantalla será 200 + 40 + 10 = 250px (¡se rompe el diseño!).
+  - Con `border-box`: El ancho total se mantendrá estrictamente en 200px, encogiendo el contenido.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 03 - Modelo de Cajas (Box Model)</title>
+
+  <style>
+    /* Buena práctica estándar en todo proyecto profesional: resetear el box-sizing */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8fafc;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      color: #0f172a;
+      margin-bottom: 20px;
+    }
+
+    .seccion {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    /* 
+      1. DEMOSTRACIÓN DE LAS 4 CAPAS
+    */
+    .demo-caja-capas {
+      /* Capa 1: Margen exterior */
+      margin: 30px; /* 30px de separación arriba, derecha, abajo e izquierda */
+      
+      /* Capa 2: Borde */
+      border: 6px solid #2563eb; /* 6px de grosor, estilo sólido, color azul */
+      
+      /* Capa 3: Relleno interior */
+      padding: 25px; /* 25px de colchón interior */
+      
+      /* Capa 4: Contenido */
+      background-color: #dbeafe; /* Fondo azul clarito para ver el contenido */
+      width: 80%;
+      text-align: center;
+      font-weight: bold;
+      color: #1e40af;
+    }
+
+    /* 
+      2. FORMAS DE DECLARAR PADDING Y MARGIN (Shorthands)
+      Se leen en el sentido de las agujas del reloj: ARRIBA -> DERECHA -> ABAJO -> IZQUIERDA
+      (Clockwise: Top -> Right -> Bottom -> Left)
+    */
+    .caja-shorthand-1 {
+      padding: 10px; /* 1 valor = Aplica a los 4 lados por igual */
+      background: #fef08a;
+      margin-bottom: 10px;
+    }
+
+    .caja-shorthand-2 {
+      padding: 15px 30px; /* 2 valores = [Arriba y Abajo] [Derecha e Izquierda] */
+      background: #bbf7d0;
+      margin-bottom: 10px;
+    }
+
+    .caja-shorthand-3 {
+      /* 4 valores = Top(20px) Right(40px) Bottom(10px) Left(5px) */
+      padding: 20px 40px 10px 5px; 
+      background: #fed7aa;
+      margin-bottom: 10px;
+    }
+
+    /* 
+      3. TRUCO DE ORO: CENTRAR UN BLOQUE CON MARGIN AUTO
+      Si una caja tiene un ancho fijo (width o max-width) y pones margin-inline: auto
+      o margin: 0 auto, la caja se centra perfectamente en la pantalla.
+    */
+    .caja-centrada {
+      width: 300px;
+      margin: 20px auto; /* 20px arriba/abajo, auto a los costados para centrar */
+      background-color: #6366f1;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .btn-nav {
+      display: inline-block;
+      margin-top: 15px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lección 03: El Modelo de Cajas (Box Model)</h1>
+
+  <div class="seccion">
+    <h2>1. Visualización de las 4 Capas</h2>
+    <p>Mira esta caja: tiene 30px de margen exterior, borde azul de 6px y padding interior de 25px:</p>
+    
+    <div class="demo-caja-capas">
+      📦 ¡Soy el Contenido de la Caja!
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>2. Abreviaciones (Shorthand) para Padding y Margin</h2>
+    <div class="caja-shorthand-1">
+      <strong>padding: 10px;</strong> (10px en los 4 lados)
+    </div>
+    <div class="caja-shorthand-2">
+      <strong>padding: 15px 30px;</strong> (15px arriba/abajo, 30px a los lados)
+    </div>
+    <div class="caja-shorthand-3">
+      <strong>padding: 20px 40px 10px 5px;</strong> (Arriba: 20px, Der: 40px, Abajo: 10px, Izq: 5px)
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>3. Centrar una Caja con Ancho Definido</h2>
+    <p>Usa <code>margin: 0 auto;</code> junto con un <code>width</code> definido para centrar elementos:</p>
+    <div class="caja-centrada">
+      🎯 Estoy Centrado con <code>margin: 0 auto</code>
+    </div>
+  </div>
+
+  <hr>
+  <a class="btn-nav" href="02_colores_fondos_y_textos.html">⬅ Lección Anterior</a> | 
+  <a class="btn-nav" href="index.html">Menú Principal</a> | 
+  <a class="btn-nav" href="04_posicionamiento_y_display.html">Siguiente Lección: Display y Posición ➡</a>
+
+</body>
+</html>

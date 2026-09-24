@@ -1,0 +1,184 @@
+<!-- 
+  =============================================================================
+  CURSO PRÁCTICO: CSS3 MODERNO Y DISEÑO WEB
+  =============================================================================
+  ¡Bienvenido/a al curso práctico de CSS!
+  
+  ¿Qué es CSS?
+  CSS significa "Cascading Style Sheets" (Hojas de Estilo en Cascada).
+  Si HTML es el esqueleto de un edificio, CSS es la pintura, la iluminación,
+  la decoración, el diseño de interiores y la distribución de los espacios.
+
+  CONSEJOS DE ESTUDIO:
+  1. Haz doble clic en este archivo (index.html) para abrirlo en tu navegador.
+  2. Cada lección incluye ejemplos visuales interactivos y su código CSS comentado paso a paso.
+  3. Puedes presionar la tecla F12 en tu teclado para inspeccionar los estilos en vivo.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso Práctico de CSS3 - Desde Cero a Moderno</title>
+  <style>
+    /* Estilos globales básicos para este menú */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f7f6;
+      color: #333;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    header {
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 25px;
+    }
+    header h1 {
+      color: #1e3a8a;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+    .lesson-list {
+      list-style: none;
+    }
+    .lesson-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #2563eb;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      border-radius: 6px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .lesson-card:hover {
+      transform: translateX(6px);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.15);
+      border-left-color: #1d4ed8;
+    }
+    .lesson-card a {
+      text-decoration: none;
+      color: #1d4ed8;
+      font-weight: 700;
+      font-size: 1.15rem;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .lesson-card a:hover {
+      text-decoration: underline;
+    }
+    .lesson-card p {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+    .tips-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .tips-box h3 {
+      color: #1e40af;
+      margin-bottom: 10px;
+    }
+    .tips-box ul {
+      margin-left: 20px;
+      color: #1e3a8a;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🎨 Curso Práctico de CSS3: De Cero a Diseñador Web</h1>
+      <p>Aprende a estilizar, diagramar y dar vida a tus páginas web paso a paso con código detalladamente comentado.</p>
+    </header>
+
+    <main>
+      <ul class="lesson-list">
+        <li class="lesson-card" style="border-left-color: #8b5cf6; background: #fbfbfe;">
+          <a href="00_fundamentos_arquitectura_y_cascada.html" style="color: #6d28d9;">🏛️ Lección 00: Arquitectura Interna de CSS, La Cascada y Especificidad</a>
+          <p>El algoritmo de cálculo de especificidad (0,0,0,0), herencia, colapso de márgenes y contextos de apilamiento con z-index.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="01_sintaxis_y_selectores.html">Lección 01: Sintaxis, Formas de Inclusión y Selectores Básicos</a>
+          <p>Anatomía de una regla CSS, selectores de etiqueta, clase (.), ID (#), agrupados y descendientes.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="02_colores_fondos_y_textos.html">Lección 02: Colores, Tipografía y Fondos</a>
+          <p>Modelos de color (HEX, RGB, HSL), fuentes (font-family, size, weight), alineación y decoración de texto.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="03_modelo_de_cajas.html">Lección 03: El Modelo de Cajas (Box Model)</a>
+          <p>El concepto más importante de CSS: Content, Padding, Border, Margin y <code>box-sizing: border-box</code>.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="04_posicionamiento_y_display.html">Lección 04: Display y Posicionamiento</a>
+          <p>Block, inline, inline-block, none, y posiciones: static, relative, absolute, fixed, sticky y z-index.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="05_flexbox_unidimensional.html">Lección 05: Flexbox (Diseño Flexible Unidimensional)</a>
+          <p>Ejes, justify-content, align-items, flex-direction, flex-wrap, gap, flex-grow y alineación perfecta.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="06_css_grid_bidimensional.html">Lección 06: CSS Grid (Diseño Bidimensional)</a>
+          <p>Filas y columnas simultáneas, fracciones (fr), repeat(), minmax(), grid-template-areas y auto-fit.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="07_responsive_design_y_media_queries.html">Lección 07: Responsive Design y Media Queries</a>
+          <p>Adaptar sitios web a celulares y tablets con @media, unidades relativas (rem, %, vw, vh) y Mobile First.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="08_animaciones_y_transiciones.html">Lección 08: Transiciones, Transformaciones y Animaciones</a>
+          <p>Efectos de hover suaves, escalado, rotación, traslación y animaciones automáticas con @keyframes.</p>
+        </li>
+        <li class="lesson-card" style="border-left-color: #16a34a; background: #f0fdf4;">
+          <a href="09_retos_y_proyectos_practicos.html" style="color: #15803d;">🛠️ Lección 09: Taller de Retos y Proyectos Visuales (¡A Diseñar!)</a>
+          <p>Construye componentes reales: Tarjeta de perfil con degradados y elevación, Tabla de precios y Landing page responsiva.</p>
+        </li>
+      </ul>
+
+      <div class="tips-box">
+        <h3>💡 Claves para dominar CSS</h3>
+        <ul>
+          <li><strong>Abre el inspector con F12:</strong> Podrás ver cómo cada línea de CSS afecta en vivo a cada caja de la pantalla.</li>
+          <li><strong>Juega cambiando valores:</strong> Cambia colores, aumenta márgenes, elimina propiedades para ver exactamente qué pasaba sin ellas.</li>
+          <li><strong>Recuerda la metáfora:</strong> HTML es el esqueleto de la casa 🦴, CSS es la pintura y decoración 🎨, y JavaScript es la electricidad y mecanismos ⚡.</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer>
+      <p>Carpeta APRENDER/CSS &bull; Material educativo práctico</p>
+    </footer>
+  </div>
+
+</body>
+</html>

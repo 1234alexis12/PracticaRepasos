@@ -1,0 +1,197 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 05: FLEXBOX (DISEÑO FLEXIBLE UNIDIMENSIONAL)
+  =============================================================================
+  
+  ¿Qué es Flexbox?
+  Es un módulo de maquetación diseñado para distribuir espacio y alinear elementos
+  a lo largo de UN SOLO EJE (en fila horizontal o en columna vertical).
+  
+  CONCEPTOS CLAVE:
+  1. Contenedor Padre (Flex Container): Al poner `display: flex;`, todos sus hijos directos
+     se convierten automáticamente en "Flex Items".
+  2. Ejes:
+     - EJE PRINCIPAL (Main Axis): Por defecto va de izquierda a derecha (row).
+     - EJE CRUZADO (Cross Axis): Va perpendicular al eje principal (de arriba hacia abajo).
+  
+  PROPIEDADES DEL PADRE:
+  - flex-direction: row (defecto) | column | row-reverse | column-reverse
+  - justify-content: Alinea en el EJE PRINCIPAL (flex-start, center, flex-end, space-between, space-around, space-evenly)
+  - align-items: Alinea en el EJE CRUZADO (stretch, center, flex-start, flex-end)
+  - flex-wrap: nowrap (defecto) | wrap (permite que los elementos salten a la siguiente línea si no caben)
+  - gap: Espacio uniforme entre los hijos (¡la forma más limpia de separar!).
+
+  PROPIEDADES DE LOS HIJOS (Flex Items):
+  - flex-grow: Cuánto puede crecer un elemento para llenar el espacio sobrante (0 = no crece, 1 = crece proporcionalmente).
+  - flex-shrink: Cuánto se encoge si no hay espacio.
+  - flex-basis: Tamaño base inicial antes de crecer o encogerse.
+  - align-self: Permite a un hijo individual sobreescribir el 'align-items' del padre.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 05 - Flexbox en CSS</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+
+    .seccion {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .caja-item {
+      background-color: #3b82f6;
+      color: white;
+      font-weight: bold;
+      padding: 15px 25px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    /* 
+      1. BARRA DE NAVEGACIÓN CON JUSTIFY-CONTENT: SPACE-BETWEEN
+    */
+    .navbar-flex {
+      display: flex;
+      justify-content: space-between; /* Extremos opuestos: Logo a la izquierda, enlaces a la derecha */
+      align-items: center;            /* Centrado vertical perfecto */
+      background-color: #1e293b;
+      padding: 12px 24px;
+      border-radius: 8px;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px; /* Espacio de 15px entre cada enlace */
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* 
+      2. EL SANTO GRIAL: CENTRADO PERFECTO HORIZONTAL Y VERTICAL
+    */
+    .contenedor-centrado-perfecto {
+      display: flex;
+      justify-content: center; /* Centrado horizontal */
+      align-items: center;     /* Centrado vertical */
+      height: 150px;
+      background-color: #f1f5f9;
+      border: 2px dashed #cbd5e1;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .item-centrado {
+      background-color: #10b981;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    /* 
+      3. TARJETAS CON WRAP Y FLEX-GROW
+    */
+    .contenedor-cards-wrap {
+      display: flex;
+      flex-wrap: wrap; /* Si la pantalla es angosta, los elementos bajan */
+      gap: 15px;       /* Separación automática en filas y columnas */
+      margin-top: 10px;
+    }
+
+    .card {
+      flex: 1 1 200px; /* flex-grow: 1, flex-shrink: 1, flex-basis: 200px */
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .btn-nav {
+      display: inline-block;
+      margin-top: 15px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lección 05: Flexbox (Diseño Flexible)</h1>
+
+  <div class="seccion">
+    <h2>1. Barra de Navegación Profesional</h2>
+    <p>Con <code>display: flex</code>, <code>justify-content: space-between</code> y <code>align-items: center</code>:</p>
+    
+    <nav class="navbar-flex">
+      <div style="font-weight: bold; font-size: 1.2rem;">🚀 MiSitioWeb</div>
+      <ul class="nav-links">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="seccion">
+    <h2>2. El Clásico Centrado Perfecto</h2>
+    <p>Antes de flexbox, centrar horizontal y verticalmente requería muchos trucos. Hoy solo necesitas 3 líneas:</p>
+    <div class="contenedor-centrado-perfecto">
+      <div class="item-centrado">🎯 ¡Totalmente Centrado!</div>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>3. Cuadrícula Flexible con <code>flex-wrap: wrap</code> y <code>gap</code></h2>
+    <p>Redimensiona la ventana de tu navegador para ver cómo las tarjetas se adaptan automáticamente:</p>
+    
+    <div class="contenedor-cards-wrap">
+      <div class="card"><strong>Tarjeta 1</strong><p>flex: 1 1 200px</p></div>
+      <div class="card"><strong>Tarjeta 2</strong><p>flex: 1 1 200px</p></div>
+      <div class="card"><strong>Tarjeta 3</strong><p>flex: 1 1 200px</p></div>
+    </div>
+  </div>
+
+  <hr>
+  <a class="btn-nav" href="04_posicionamiento_y_display.html">⬅ Lección Anterior</a> | 
+  <a class="btn-nav" href="index.html">Menú Principal</a> | 
+  <a class="btn-nav" href="06_css_grid_bidimensional.html">Siguiente Lección: CSS Grid ➡</a>
+
+</body>
+</html>

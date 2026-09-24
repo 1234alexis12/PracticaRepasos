@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 04 - Funciones y Alcance (JS)</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f8fafc; color: #1e293b; padding: 20px; line-height: 1.6; }
+    .container { max-width: 800px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    h1 { color: #854d0e; }
+    .consola-output { background: #0f172a; color: #38bdf8; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.95rem; white-space: pre-wrap; margin-top: 15px; }
+    .btn-nav { display: inline-block; margin-top: 20px; color: #2563eb; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ Lección 04: Funciones y Alcance (Scope)</h1>
+    <p>Abre el archivo <code>04_funciones_y_alcance.js</code> para ver las explicaciones o revisa la salida en vivo:</p>
+
+    <h3>Salida de la consola:</h3>
+    <div class="consola-output" id="consola"></div>
+
+    <a class="btn-nav" href="03_bucles_e_iteraciones.html">⬅ Lección Anterior</a> | 
+    <a class="btn-nav" href="index.html">Menú Principal</a> | 
+    <a class="btn-nav" href="05_arreglos_y_metodos.html">Siguiente Lección: Arreglos ➡</a>
+  </div>
+
+  <script>
+    const salida = document.getElementById('consola');
+    const logOriginal = console.log;
+    console.log = function(...args) {
+      logOriginal.apply(console, args);
+      salida.innerHTML += args.map(a => typeof a === 'object' ? JSON.stringify(a) : a).join(' ') + "\n";
+    };
+  </script>
+  <script src="04_funciones_y_alcance.js"></script>
+</body>
+</html>

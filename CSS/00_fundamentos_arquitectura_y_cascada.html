@@ -1,0 +1,172 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 00: ARQUITECTURA INTERNA DE CSS, LA CASCADA Y ESPECIFICIDAD
+  =============================================================================
+  
+  Muchos programadores dicen: "CSS es impredecible y hace cosas raras".
+  ¡Esto solo ocurre cuando no conocen el algoritmo interno del navegador!
+  
+  En esta lección dominarás los 5 pilares profundos del motor de CSS:
+  1. El Algoritmo de la Cascada y Orden de Origen.
+  2. El Cálculo Matemático de la Especificidad (0, 0, 0, 0).
+  3. Herencia de Propiedades (Inheritance).
+  4. El Fenómeno del Colapso de Márgenes (Margin Collapsing).
+  5. Contextos de Apilamiento (Stacking Contexts y la verdad sobre z-index).
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 00 - Arquitectura Interna de CSS</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8fafc; color: #1e293b; padding: 25px; line-height: 1.7; }
+    .container { max-width: 900px; margin: 0 auto; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    h1 { color: #1e3a8a; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+    h2 { color: #0f172a; margin: 25px 0 10px 0; }
+    .bloque-teoria { background: #f1f5f9; border-left: 5px solid #3b82f6; padding: 18px; border-radius: 6px; margin-bottom: 20px; }
+    .formula-especificidad { font-family: monospace; background: #0f172a; color: #38bdf8; padding: 12px; border-radius: 6px; margin: 10px 0; display: inline-block; font-size: 1rem; }
+    
+    /* 
+      =========================================================================
+      1. DEMOSTRACIÓN DE ESPECIFICIDAD: ¿QUIÉN GANA?
+      =========================================================================
+      La especificidad es un sistema de 4 casillas: (Inline, ID, Clases, Etiquetas)
+      
+      Regla A: p                          -> (0, 0, 0, 1)  [Puntaje: 1]
+      Regla B: .parrafo-texto             -> (0, 0, 1, 0)  [Puntaje: 10]
+      Regla C: .tarjeta .parrafo-texto    -> (0, 0, 2, 0)  [Puntaje: 20]
+      Regla D: #mi-texto-unico            -> (0, 1, 0, 0)  [Puntaje: 100]
+      Regla E: style="color: purple;"     -> (1, 0, 0, 0)  [Puntaje: 1000]
+      Regla F: !important                 -> Rompe la cascada (GANA SIEMPRE - Usar solo en emergencias)
+    */
+
+    p.texto-demo-especificidad {
+      color: gray; /* Especificidad: (0, 0, 1, 1) = 11 */
+    }
+
+    #texto-ganador {
+      color: #2563eb; /* Especificidad: (0, 1, 0, 0) = 100 -> ¡GANA ESTA REGLA! */
+      font-weight: bold;
+    }
+
+    /* 
+      =========================================================================
+      2. COLAPSO DE MÁRGENES (MARGIN COLLAPSING)
+      =========================================================================
+      Si una caja tiene margin-bottom: 40px y la caja de abajo tiene margin-top: 30px,
+      ¡la separación total NO es 70px! El navegador las "colapsa" y toma solo la MAYOR (40px).
+    */
+    .caja-colapso-1 {
+      background-color: #fed7aa;
+      border: 1px solid #ea580c;
+      padding: 10px;
+      margin-bottom: 40px; /* Margen inferior de 40px */
+      text-align: center;
+    }
+
+    .caja-colapso-2 {
+      background-color: #bbf7d0;
+      border: 1px solid #16a34a;
+      padding: 10px;
+      margin-top: 30px; /* Margen superior de 30px */
+      text-align: center;
+    }
+
+    /* 
+      =========================================================================
+      3. CONTEXTOS DE APILAMIENTO (STACKING CONTEXTS)
+      =========================================================================
+      ¿Por qué 'z-index: 9999' a veces no funciona?
+      Si un contenedor padre tiene position: relative y un z-index bajo (ej. z-index: 1),
+      ninguno de sus hijos podrá superar a un elemento vecino con z-index: 2,
+      aunque el hijo tenga z-index: 999999.
+    */
+    .padre-nivel-1 {
+      position: relative;
+      z-index: 1; /* Nivel base */
+      background: #e2e8f0;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+
+    .hijo-z-infinito {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 999999; /* ¡Atrapado dentro del contexto de su padre (nivel 1)! */
+      background: #ef4444;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    .vecino-nivel-2 {
+      position: relative;
+      z-index: 2; /* Gana sobre todo el padre-nivel-1 y todos sus hijos */
+      background: #1e3a8a;
+      color: white;
+      padding: 15px;
+      margin-top: -15px;
+      border-radius: 8px;
+    }
+
+    .btn-nav { display: inline-block; margin-top: 25px; color: #2563eb; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🏛️ Lección 00: Arquitectura y Mecánicas Profundas de CSS</h1>
+    
+    <!-- SECCIÓN 1: ESPECIFICIDAD -->
+    <h2>1. La Matemática de la Especificidad</h2>
+    <div class="bloque-teoria">
+      <p>Cuando dos reglas de CSS compiten por el mismo elemento, el navegador calcula un vector de 4 números <code>(Inline, ID, Clase, Elemento)</code>:</p>
+      <div class="formula-especificidad">
+        Especificidad = ( Estilos en Línea , #IDs , .Clases / Atributos , Etiquetas )
+      </div>
+      <p>
+        Ejemplo en vivo: La regla de clase dice gris, pero la regla con <code>#texto-ganador</code> tiene un ID (0,1,0,0) y gana:
+      </p>
+      <p id="texto-ganador" class="texto-demo-especificidad">
+        👉 ¡Este texto es azul porque el ID (#texto-ganador) tiene mayor peso que la clase (.texto-demo-especificidad)!
+      </p>
+    </div>
+
+    <!-- SECCIÓN 2: COLAPSO DE MÁRGENES -->
+    <h2>2. El Fenómeno del Colapso de Márgenes (Margin Collapsing)</h2>
+    <div class="bloque-teoria">
+      <p>En el flujo normal vertical de bloques, los márgenes adyacentes no se suman, sino que se solapan:</p>
+      <div class="caja-colapso-1">Caja 1: tiene <code>margin-bottom: 40px;</code></div>
+      <div class="caja-colapso-2">Caja 2: tiene <code>margin-top: 30px;</code></div>
+      <p style="font-size: 0.9rem; color: #64748b; margin-top: 10px;">
+        🔍 <strong>Distancia real entre ellas:</strong> 40px (no 70px). El navegador toma el valor máximo.
+      </p>
+    </div>
+
+    <!-- SECCIÓN 3: CONTEXTO DE APILAMIENTO -->
+    <h2>3. Contextos de Apilamiento (¿Por qué falla z-index: 9999?)</h2>
+    <div class="bloque-teoria">
+      <p>Un <code>z-index</code> solo compite contra sus hermanos dentro del mismo <em>Stacking Context</em>:</p>
+      
+      <div class="padre-nivel-1">
+        <strong>Padre A (z-index: 1)</strong>
+        <div class="hijo-z-infinito">Hijo de A (z-index: 999999)</div>
+      </div>
+      <div class="vecino-nivel-2">
+        <strong>Padre B (z-index: 2)</strong> — Queda por encima del Hijo de A porque el Padre B le gana al Padre A.
+      </div>
+    </div>
+
+    <hr>
+    <a class="btn-nav" href="index.html">⬅ Menú Principal de CSS</a> | 
+    <a class="btn-nav" href="01_sintaxis_y_selectores.html">Siguiente Lección: Sintaxis y Selectores ➡</a>
+  </div>
+
+</body>
+</html>

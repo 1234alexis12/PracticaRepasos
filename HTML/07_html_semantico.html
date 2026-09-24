@@ -1,0 +1,172 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 07: HTML SEMÁNTICO MODERNO (ESTRUCTURA DE UNA PÁGINA REAL)
+  =============================================================================
+  
+  ¿Qué es la semántica en HTML?
+  Es usar la etiqueta correcta para el propósito correcto según el significado
+  del contenido, y no solo usar <div> para absolutamente todo (la "divitis").
+
+  ¿Por qué es crucial?
+  1. SEO (Posicionamiento en Google): Los robots de búsqueda entienden qué es tu menú,
+     cuál es el contenido principal y qué es secundario.
+  2. Accesibilidad: Las personas ciegas o con visión reducida navegan la web usando
+     atajos del teclado que saltan directo al <main> o al <nav>.
+  3. Código limpio para CSS: En lugar de ".encabezado-arriba-div", puedes dar estilos
+     directamente a <header>, <nav>, <footer>, etc.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 07 - HTML Semántico Moderno</title>
+</head>
+<body>
+
+  <!-- 
+    ===========================================================================
+    1. <header> (Encabezado Principal de la Página)
+    ===========================================================================
+    Contiene la identidad del sitio: el logotipo, el título principal y suele
+    albergar también el menú de navegación principal.
+  -->
+  <header>
+    <h1>MiBlogTech.dev</h1>
+    <p>Aprende desarrollo web paso a paso</p>
+
+    <!-- 
+      =========================================================================
+      2. <nav> (Barra de Navegación)
+      =========================================================================
+      Indica a los navegadores y lectores de pantalla que este bloque contiene
+      los enlaces de navegación principales del sitio web.
+    -->
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#articulos">Artículos</a></li>
+        <li><a href="#acerca">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    3. <main> (Contenido Principal)
+    ===========================================================================
+    REGLA: Solo debe haber UN <main> por página.
+    Representa el contenido central y único de este documento. No debe incluir
+    elementos repetitivos como encabezados globales o pies de página.
+  -->
+  <main>
+
+    <!-- 
+      =========================================================================
+      4. <section> (Sección Temática)
+      =========================================================================
+      Agrupa contenido relacionado temáticamente. Cada <section> generalmente
+      debe incluir su propio encabezado (h2, h3...).
+    -->
+    <section id="articulos">
+      <h2>Últimas Publicaciones</h2>
+
+      <!-- 
+        =======================================================================
+        5. <article> (Artículo Independiente y Reutilizable)
+        =======================================================================
+        Representa una pieza de contenido que tiene sentido por sí misma y
+        podría publicarse de forma aislada (un post de blog, una noticia,
+        un producto en una tienda o un comentario).
+      -->
+      <article>
+        <h3>¿Por qué aprender HTML antes que CSS?</h3>
+        <p><small>Publicado el 11 de Septiembre por Alexis • Categoría: Fundamentos</small></p>
+
+        <p>
+          HTML define la estructura y el orden lógico. Intentar diseñar con CSS
+          sin una base sólida de HTML es como pintar una casa que aún no tiene cimientos.
+        </p>
+
+        <!-- 
+          <figure> y <figcaption>:
+          Forma semántica oficial de acompañar una imagen con su pie de foto o descripción.
+        -->
+        <figure>
+          <img 
+            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=450&auto=format&fit=crop&q=60" 
+            alt="Monitor con código HTML en pantalla"
+            width="400"
+          >
+          <figcaption>Fig 1. Código estructurado y legible en un editor.</figcaption>
+        </figure>
+
+        <p><a href="#">Leer artículo completo...</a></p>
+      </article>
+
+      <br>
+
+      <article>
+        <h3>El Camino del Desarrollador Web</h3>
+        <p><small>Publicado el 10 de Septiembre • Categoría: Carrera</small></p>
+        <p>
+          El recorrido frontend moderno inicia con HTML5, continúa con CSS3 (Flexbox y Grid),
+          y se corona con JavaScript interactivo.
+        </p>
+        <p><a href="#">Leer artículo completo...</a></p>
+      </article>
+    </section>
+
+  </main>
+
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    6. <aside> (Barra Lateral o Contenido Tangencial)
+    ===========================================================================
+    Contiene información relacionada indirectamente con el contenido principal
+    (biografía del autor, enlaces recomendados, publicidad o categorías).
+  -->
+  <aside id="acerca">
+    <h3>Acerca del Autor</h3>
+    <p>
+      ¡Hola! Soy estudiante de desarrollo web autodidacta aprendiendo paso a paso
+      las tecnologías que dan vida a internet.
+    </p>
+
+    <h4>Enlaces de interés</h4>
+    <ul>
+      <li><a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" rel="noopener noreferrer">MDN Web Docs en Español</a></li>
+      <li><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">Validador Oficial de HTML del W3C</a></li>
+    </ul>
+  </aside>
+
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    7. <footer> (Pie de Página)
+    ===========================================================================
+    Va al final del documento. Suele contener información de derechos de autor (copyright),
+    enlaces a políticas de privacidad, redes sociales y contacto.
+  -->
+  <footer id="contacto">
+    <p>&copy; 2026 MiBlogTech. Todos los derechos reservados.</p>
+    <p>Hecho con HTML5 semántico puro.</p>
+  </footer>
+
+  <hr>
+
+  <!-- Navegación final -->
+  <p>
+    <a href="06_formularios_e_inputs.html">⬅ Lección Anterior: Formularios e Inputs</a> | 
+    <a href="index.html">🎉 ¡Felicidades! Volver al Menú Principal</a>
+  </p>
+
+</body>
+</html>

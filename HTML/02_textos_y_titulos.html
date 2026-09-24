@@ -1,0 +1,133 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 02: TEXTOS, TÍTULOS Y FORMATO DE TEXTO
+  =============================================================================
+  
+  En esta lección aprenderás a dar jerarquía y estructura a los textos.
+  REGLA DE ORO: Las etiquetas HTML dan SIGNIFICADO (semántica), NO diseño.
+  El tamaño, los colores y las fuentes se controlarán más adelante con CSS.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 02 - Textos y Títulos</title>
+</head>
+<body>
+
+  <!-- 
+    1. ENCABEZADOS O TÍTULOS (Headings: h1 a h6):
+    - Van desde <h1> (el más importante) hasta <h6> (el de menor jerarquía).
+    - BUENA PRÁCTICA SEO: Solo debe existir UN SOLO <h1> por página web.
+      El <h1> es como el título principal de un libro.
+    - Los <h2> son los capítulos principales.
+    - Los <h3> son subtítulos de esos capítulos, y así sucesivamente.
+    - NUNCA uses un <h1> solo porque quieres texto grande. Si quieres texto grande,
+      eso se hace con CSS (font-size).
+  -->
+  <h1>Título Principal de la Página (h1 - Solo 1 por página)</h1>
+  <h2>Sección Principal (h2)</h2>
+  <h3>Subsección de Información (h3)</h3>
+  <h4>Título de Menor Nivel (h4)</h4>
+  <h5>Subtítulo Detallado (h5)</h5>
+  <h6>Título de Mínima Importancia (h6)</h6>
+
+  <!-- 
+    2. LÍNEA SEPARADORA (<hr>):
+    "Horizontal Rule". Dibuja una línea horizontal para separar temas o secciones de contenido.
+    Es una etiqueta autocontenida (no requiere cierre </hr>).
+  -->
+  <hr>
+
+  <!-- 
+    3. PÁRRAFOS (<p>):
+    Es la etiqueta fundamental para cualquier bloque de texto regular.
+    Por defecto, el navegador añade automáticamente un espacio arriba y abajo de cada párrafo.
+  -->
+  <h2>Trabajando con Párrafos</h2>
+  
+  <p>
+    Este es un párrafo normal. Los navegadores ignoran los saltos de línea y múltiples espacios 
+    en blanco que hagas con la tecla 'Enter' o la barra espaciadora en tu editor de código.
+  </p>
+
+  <p>
+    Por ejemplo, aunque en el código haya mucho      espacio
+    o saltos de línea dentro de la misma etiqueta, el navegador lo mostrará como un solo espacio continuo.
+  </p>
+
+  <!-- 
+    4. SALTO DE LÍNEA FORZADO (<br>):
+    "Break". Fuerza un salto a la línea siguiente sin iniciar un nuevo párrafo.
+    Úsalo con moderación (por ejemplo, en poemas, letras de canciones o direcciones postales).
+    NO lo uses repetidas veces solo para crear espacios en blanco (eso se hace con CSS margin/padding).
+  -->
+  <p>
+    Dirección Postal:<br>
+    Calle Ejemplo, Número 123<br>
+    Código Postal: 28001<br>
+    Ciudad, País
+  </p>
+
+  <hr>
+
+  <!-- 
+    5. FORMATOS DE TEXTO (EN LÍNEA / INLINE):
+    Estas etiquetas modifican palabras o frases dentro de un párrafo.
+  -->
+  <h2>Énfasis y Formato de Palabras</h2>
+
+  <p>
+    <!-- <strong>: Texto de gran importancia o urgencia. Visualmente se ve en NEGRITA. -->
+    La etiqueta <strong>&lt;strong&gt;</strong> indica texto de <strong>gran importancia o urgencia</strong>.
+  </p>
+
+  <p>
+    <!-- <em>: Énfasis o cambio de entonación al leer. Visualmente se ve en CURSIVA / ITÁLICA. -->
+    La etiqueta <em>&lt;em&gt;</em> (emphasis) añade <em>énfasis o entonación</em> al texto.
+  </p>
+
+  <p>
+    <!-- <mark>: Resalta el texto como con un marcador fluorescente. Muy usado en resultados de búsqueda. -->
+    La etiqueta <mark>&lt;mark&gt;</mark> sirve para <mark>resaltar información relevante</mark>.
+  </p>
+
+  <p>
+    <!-- <small>: Texto secundario, notas al pie, avisos de copyright o términos y condiciones. -->
+    La etiqueta <small>&lt;small&gt;</small> representa texto secundario como: <small>© 2026 Todos los derechos reservados.</small>
+  </p>
+
+  <p>
+    <!-- <del> o <s>: Texto tachado (por ejemplo, un precio anterior en descuento). -->
+    Precio anterior: <del>$100 USD</del> | Precio oferta: <strong>$50 USD</strong>
+  </p>
+
+  <p>
+    <!-- <code>: Para mostrar fragmentos de código de programación. -->
+    Para imprimir en consola en JavaScript usamos <code>console.log("Hola");</code>.
+  </p>
+
+  <!-- 
+    6. CITAS EN BLOQUE (<blockquote>):
+    Se usa para citar textos largos dichos por autores, libros o fuentes externas.
+  -->
+  <h2>Citas</h2>
+  <blockquote>
+    "La simplicidad es el requisito previo para la confiabilidad."
+    <br>
+    — Edsger W. Dijkstra
+  </blockquote>
+
+  <hr>
+
+  <!-- Navegación entre lecciones -->
+  <p>
+    <a href="01_estructura_basica.html">⬅ Lección Anterior: Estructura Básica</a> | 
+    <a href="index.html">Menú Principal</a> | 
+    <a href="03_enlaces_e_imagenes.html">Siguiente Lección: Enlaces e Imágenes ➡</a>
+  </p>
+
+</body>
+</html>

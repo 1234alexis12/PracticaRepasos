@@ -1,0 +1,178 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 07: RESPONSIVE DESIGN Y MEDIA QUERIES
+  =============================================================================
+  
+  ¿Qué es Responsive Design (Diseño Adaptable)?
+  Es la técnica de diseñar páginas web para que se vean perfectas en cualquier
+  dispositivo: teléfonos móviles, tablets, laptops y pantallas gigantes 4K.
+
+  CONCEPTOS CLAVE:
+  1. Meta Viewport (en el <head>):
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     ¡Sin esta etiqueta, los celulares intentarán mostrar la web como en una PC diminuta!
+  
+  2. Media Queries (@media):
+     Son bloques condicionales en CSS que aplican estilos solo si la pantalla cumple un criterio de tamaño.
+     Sintaxis:
+       @media (max-width: 768px) {
+         /* Reglas que solo se aplican en pantallas de 768px o menores (celulares/tablets) */
+       }
+  
+  3. Unidades Relativas vs Fijas:
+     - Fijas: px (píxeles) -> No cambian con el tamaño de pantalla ni preferencias del usuario.
+     - Relativas a Fuente: rem (Root EM -> relativo al tamaño base del navegador, usualmente 16px).
+     - Relativas a Pantalla: vw (Viewport Width, 1vw = 1% del ancho), vh (Viewport Height, 1vh = 1% del alto).
+     - Porcentaje: % (relativo al tamaño del contenedor padre).
+  
+  4. Enfoque Mobile First (Móvil Primero):
+     Escribir primero los estilos para pantallas pequeñas (móviles) y luego añadir
+     @media (min-width: ...) para ir agregando columnas y detalles a medida que la pantalla crece.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 07 - Responsive Design y Media Queries</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      color: #0f172a;
+    }
+
+    .seccion {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    /* 
+      1. CAJA CON INDICADOR VISUAL DEL DISPOSITIVO
+    */
+    .dispositivo-indicador {
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 8px;
+      color: white;
+      font-size: 1.2rem;
+      /* Por defecto: Estilo para Computadoras de Escritorio (Desktop) */
+      background-color: #2563eb;
+    }
+
+    /* 
+      MEDIA QUERY 1: Tablets y pantallas medianas (menos de 900px)
+    */
+    @media (max-width: 900px) {
+      .dispositivo-indicador {
+        background-color: #f59e0b; /* Naranja para tablets */
+      }
+      .dispositivo-indicador::after {
+        content: " 📱 (Detectado tamaño Tablet: <= 900px)";
+        display: block;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* 
+      MEDIA QUERY 2: Teléfonos Celulares (menos de 600px)
+    */
+    @media (max-width: 600px) {
+      .dispositivo-indicador {
+        background-color: #ef4444; /* Rojo para teléfonos */
+        font-size: 1rem;
+      }
+      .dispositivo-indicador::after {
+        content: " 📲 (Detectado tamaño Celular: <= 600px)";
+        display: block;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* 
+      2. COLUMNAS QUE SE VUELVEN FILAS EN MÓVIL
+    */
+    .contenedor-columnas {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .columna-demo {
+      flex: 1;
+      background-color: #e0e7ff;
+      border: 1px solid #c7d2fe;
+      padding: 20px;
+      border-radius: 6px;
+      text-align: center;
+      color: #3730a3;
+    }
+
+    /* Cuando la pantalla mide 650px o menos, cambiamos flex-direction a column */
+    @media (max-width: 650px) {
+      .contenedor-columnas {
+        flex-direction: column; /* Apila las columnas una debajo de otra */
+      }
+    }
+
+    .btn-nav {
+      display: inline-block;
+      margin-top: 15px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lección 07: Responsive Design y Media Queries</h1>
+
+  <div class="seccion">
+    <h2>1. Indicador en Tiempo Real</h2>
+    <p>
+      ¡Prueba esto! Haz más angosta la ventana de tu navegador arrastrando el borde hacia la izquierda.
+      Observa cómo cambia el color de la caja según el ancho:
+    </p>
+    <br>
+    <div class="dispositivo-indicador">
+      🖥️ Pantalla Grande (Escritorio / Laptop)
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>2. Columnas Adaptables (Flexbox + Media Query)</h2>
+    <p>En pantallas de PC están lado a lado (3 columnas). En celulares (menos de 650px) se apilan verticalmente:</p>
+    
+    <div class="contenedor-columnas">
+      <div class="columna-demo">📦 Columna A</div>
+      <div class="columna-demo">📦 Columna B</div>
+      <div class="columna-demo">📦 Columna C</div>
+    </div>
+  </div>
+
+  <hr>
+  <a class="btn-nav" href="06_css_grid_bidimensional.html">⬅ Lección Anterior</a> | 
+  <a class="btn-nav" href="index.html">Menú Principal</a> | 
+  <a class="btn-nav" href="08_animaciones_y_transiciones.html">Siguiente Lección: Animaciones y Transiciones ➡</a>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!-- 
+  =============================================================================
+  CURSO PRÁCTICO: JAVASCRIPT MODERNO (ES6+)
+  =============================================================================
+  ¡Bienvenido/a al curso práctico de JavaScript!
+  
+  ¿Qué es JavaScript?
+  JavaScript es el lenguaje de programación del navegador web.
+  Le da INTELIGENCIA, DINAMISMO e INTERACTIVIDAD a las páginas.
+  
+  Metáfora:
+  - HTML = El esqueleto y los órganos 🦴
+  - CSS = La piel, la ropa y el peinado 🎨
+  - JavaScript = Los músculos, el cerebro y el sistema nervioso ⚡🧠
+
+  CÓMO PROBAR EL CÓDIGO:
+  1. Puedes abrir cualquiera de estos archivos .html en tu navegador.
+  2. Presiona F12 y ve a la pestaña "Console" (Consola).
+  3. También puedes ejecutar los archivos .js con Node.js en tu terminal: `node 01_variables_y_tipos_de_datos.js`.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso Práctico de JavaScript - De Cero a Desarrollador</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #fefce8; /* Tono cálido característico del amarillo JS */
+      color: #1f2937;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+    header {
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #fef08a;
+      margin-bottom: 25px;
+    }
+    header h1 {
+      color: #854d0e;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      color: #713f12;
+      font-size: 1.1rem;
+    }
+    .lesson-list {
+      list-style: none;
+    }
+    .lesson-card {
+      background: #fffbeb;
+      border: 1px solid #fef08a;
+      border-left: 5px solid #eab308;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      border-radius: 6px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .lesson-card:hover {
+      transform: translateX(6px);
+      box-shadow: 0 4px 12px rgba(234, 179, 8, 0.2);
+      border-left-color: #ca8a04;
+    }
+    .lesson-card a {
+      text-decoration: none;
+      color: #854d0e;
+      font-weight: 700;
+      font-size: 1.15rem;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .lesson-card a:hover {
+      text-decoration: underline;
+    }
+    .lesson-card p {
+      color: #78350f;
+      font-size: 0.95rem;
+    }
+    .tips-box {
+      background: #fef9c3;
+      border: 1px solid #fde047;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .tips-box h3 {
+      color: #854d0e;
+      margin-bottom: 10px;
+    }
+    .tips-box ul {
+      margin-left: 20px;
+      color: #713f12;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #a1a1aa;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>⚡ Curso Práctico de JavaScript (ES6+)</h1>
+      <p>Aprende la lógica de programación, algoritmos y control interactivo del navegador con explicaciones minuciosas.</p>
+    </header>
+
+    <main>
+      <ul class="lesson-list">
+        <li class="lesson-card" style="border-left-color: #8b5cf6; background: #fdf4ff;">
+          <a href="00_arquitectura_y_motor_javascript.html" style="color: #7e22ce;">🏛️ Lección 00: Arquitectura del Motor V8, Event Loop y Memoria</a>
+          <p>Call Stack, Memory Heap, paso por valor vs referencia, Closures privados y orden de Microtasks vs Macrotasks.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="01_variables_y_tipos_de_datos.html">Lección 01: Variables, Constantes y Tipos de Datos</a>
+          <p>Diferencias entre let, const y var. Tipos primitivos: String, Number, Boolean, Null, Undefined y Template Strings.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="02_condicionales_y_operadores.html">Lección 02: Operadores y Estructuras Condicionales</a>
+          <p>Comparación estricta (=== vs ==), operadores lógicos (&&, ||, !), if / else if / else, switch y operador ternario.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="03_bucles_e_iteraciones.html">Lección 03: Bucles e Iteraciones</a>
+          <p>Repetición automatizada con for, while, do-while, for...of (colecciones) y control de flujo con break/continue.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="04_funciones_y_alcance.html">Lección 04: Funciones, Parámetros y Scope</a>
+          <p>Funciones declaradas, funciones de flecha (Arrow Functions: () => {}), return, parámetros por defecto y ámbito léxico.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="05_arreglos_y_metodos.html">Lección 05: Arreglos (Arrays) y Métodos Modernos</a>
+          <p>Listas de datos, mutación (push, pop, splice) y métodos funcionales inmutables (map, filter, reduce, find, forEach).</p>
+        </li>
+        <li class="lesson-card">
+          <a href="06_objetos_y_json.html">Lección 06: Objetos Literales, Desestructuración y JSON</a>
+          <p>Estructuras clave-valor, métodos de objeto, desestructuración ({ prop }), spread operator (...) y parseo de JSON.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="07_manipulacion_del_dom.html">Lección 07: Manipulación del DOM (Document Object Model)</a>
+          <p>Seleccionar elementos (querySelector), modificar texto (textContent), clases CSS (classList) y crear nodos en vivo.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="08_eventos_e_interactividad.html">Lección 08: Eventos y Experiencia de Usuario</a>
+          <p>Escuchar clicks, entradas de teclado, formularios con preventDefault() y manipulación interactiva de interfaces.</p>
+        </li>
+        <li class="lesson-card">
+          <a href="09_asincronia_y_fetch.html">Lección 09: Asincronía, Promesas, Async/Await y Fetch API</a>
+          <p>Manejo de operaciones lentas, promesas, la sintaxis moderna async/await y consumo de APIs de internet con fetch().</p>
+        </li>
+        <li class="lesson-card" style="border-left-color: #16a34a; background: #f0fdf4;">
+          <a href="10_retos_y_proyectos_practicos.html" style="color: #15803d;">🛠️ Lección 10: Taller de Proyectos Prácticos (¡A Programar!)</a>
+          <p>3 aplicaciones interactivas en vivo: To-Do List completa, Generador de Frases y Buscador en Tiempo Real.</p>
+        </li>
+      </ul>
+
+      <div class="tips-box">
+        <h3>🛠️ Cómo sacar el máximo provecho</h3>
+        <ul>
+          <li><strong>Consola del Navegador:</strong> Presiona <kbd>F12</kbd> o <kbd>Ctrl + Shift + I</kbd> en cualquier lección y mira la pestaña <em>Console</em>.</li>
+          <li><strong>Archivos .js puros:</strong> En esta misma carpeta encontrarás los archivos <code>.js</code> equivalentes que puedes correr con Node.js en consola.</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer>
+      <p>Carpeta APRENDER/JAVASCRIPT &bull; Material educativo estructurado</p>
+    </footer>
+  </div>
+
+</body>
+</html>

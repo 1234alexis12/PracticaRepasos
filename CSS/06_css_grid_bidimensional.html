@@ -1,0 +1,202 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 06: CSS GRID (DISEÑO BIDIMENSIONAL)
+  =============================================================================
+  
+  ¿Qué es CSS Grid?
+  Mientras que Flexbox trabaja en 1 sola dirección a la vez (fila O columna),
+  CSS Grid está diseñado para maquetar en DOS DIMENSIONES SIMULTÁNEAS (filas Y columnas).
+  Es ideal para estructurar layouts completos de páginas web (Header, Sidebar, Main, Footer).
+
+  CONCEPTOS CLAVE:
+  1. Contenedor Grid: Al poner `display: grid;`, activamos el sistema de cuadrícula.
+  2. Columnas y Filas:
+     - `grid-template-columns`: Define cuántas columnas habrá y su ancho.
+     - `grid-template-rows`: Define las filas y su alto.
+  3. La Unidad Fracción (`fr`):
+     - Representa una fracción del espacio disponible.
+     - Ej: `grid-template-columns: 1fr 2fr 1fr;` -> La columna central será el doble de ancha que las laterales.
+  4. Funciones Útiles:
+     - `repeat(3, 1fr)`: Equivale a escribir `1fr 1fr 1fr`.
+     - `minmax(200px, 1fr)`: La columna nunca medirá menos de 200px, pero puede crecer hasta 1fr.
+     - `repeat(auto-fit, minmax(250px, 1fr))`: ¡Grid ultra-responsivo sin necesidad de media queries!
+  5. Nombrar Áreas con `grid-template-areas`:
+     - Permite dibujar el mapa visual del sitio web con nombres textuales legibles.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 06 - CSS Grid en CSS</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+
+    .seccion {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .grid-box {
+      background-color: #3b82f6;
+      color: white;
+      padding: 20px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* 
+      1. GRID BÁSICO: 3 COLUMNAS DE IGUAL TAMAÑO
+    */
+    .grid-columnas-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columnas de 1 fracción cada una */
+      gap: 15px;                             /* Separación de 15px entre celdas */
+      margin-top: 10px;
+    }
+
+    /* 
+      2. DISEÑO COMPLETO DE SITIO WEB USANDO GRID AREAS
+    */
+    .layout-sitio {
+      display: grid;
+      grid-template-columns: 200px 1fr; /* Columna lateral de 200px y contenido con el resto */
+      grid-template-rows: 60px 180px 50px; /* Alto del header, main y footer */
+      grid-template-areas:
+        "cabecera cabecera"
+        "barra    contenido"
+        "pie      pie";
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .area-header {
+      grid-area: cabecera;
+      background-color: #1e3a8a;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    .area-sidebar {
+      grid-area: barra;
+      background-color: #e2e8f0;
+      color: #334155;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    .area-main {
+      grid-area: contenido;
+      background-color: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    .area-footer {
+      grid-area: pie;
+      background-color: #0f172a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      border-radius: 4px;
+    }
+
+    /* 
+      3. GRID RESPONSIVO MÁGICO (AUTO-FIT)
+    */
+    .grid-responsivo-magico {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .card-tienda {
+      background-color: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .btn-nav {
+      display: inline-block;
+      margin-top: 15px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lección 06: CSS Grid (Diseño Bidimensional)</h1>
+
+  <div class="seccion">
+    <h2>1. Cuadrícula de 3 Columnas (<code>repeat(3, 1fr)</code>)</h2>
+    <div class="grid-columnas-3">
+      <div class="grid-box">Columna 1</div>
+      <div class="grid-box">Columna 2</div>
+      <div class="grid-box">Columna 3</div>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>2. Maqueta Completa de Página con <code>grid-template-areas</code></h2>
+    <div class="layout-sitio">
+      <header class="area-header">🌐 Header / Cabecera (ocupa 2 columnas)</header>
+      <aside class="area-sidebar">📁 Sidebar (200px)</aside>
+      <main class="area-main">📄 Contenido Principal (1fr - flexible)</main>
+      <footer class="area-footer">© Footer / Pie de página</footer>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>3. Galería Auto-Adaptable sin Media Queries</h2>
+    <p>Usa <code>repeat(auto-fit, minmax(180px, 1fr))</code>. Si achicas la ventana, las tarjetas se redistribuyen solas:</p>
+    
+    <div class="grid-responsivo-magico">
+      <div class="card-tienda">📱 Producto 1</div>
+      <div class="card-tienda">💻 Producto 2</div>
+      <div class="card-tienda">🎧 Producto 3</div>
+      <div class="card-tienda">⌚ Producto 4</div>
+    </div>
+  </div>
+
+  <hr>
+  <a class="btn-nav" href="05_flexbox_unidimensional.html">⬅ Lección Anterior</a> | 
+  <a class="btn-nav" href="index.html">Menú Principal</a> | 
+  <a class="btn-nav" href="07_responsive_design_y_media_queries.html">Siguiente Lección: Responsive Design ➡</a>
+
+</body>
+</html>

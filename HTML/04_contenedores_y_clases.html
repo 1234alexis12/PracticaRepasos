@@ -1,0 +1,155 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 04: CONTENEDORES (DIV, SPAN), CLASES E IDENTIFICADORES (ID)
+  =============================================================================
+  
+  ¡ATENCIÓN! Esta lección es EL PUENTE PRINCIPAL HACIA CSS.
+  Para que en el futuro puedas pintar, ordenar en columnas, poner bordes y sombras,
+  necesitas saber agrupar elementos y ponerles "etiquetas de nombre" (class e id).
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 04 - Contenedores, Clases e ID</title>
+</head>
+<body>
+
+  <h1>Contenedores genéricos, Clases e Identificadores</h1>
+  <p>Comprender estos conceptos te facilitará el 80% del aprendizaje cuando comiences con CSS.</p>
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    1. ELEMENTOS DE BLOQUE vs ELEMENTOS EN LÍNEA
+    ===========================================================================
+    En HTML existen dos naturalezas fundamentales de elementos:
+
+    A) Elementos de BLOQUE (Block):
+       - Ocupan todo el ancho disponible de la línea (100%).
+       - Siempre provocan que el siguiente elemento comience en una línea nueva debajo.
+       - Ejemplos: <div>, <h1>...<h6>, <p>, <ul>, <li>, <form>.
+
+    B) Elementos EN LÍNEA (Inline):
+       - Solo ocupan el espacio justo y necesario que requiere su contenido.
+       - Se colocan uno al lado del otro en la misma línea horizontal.
+       - Ejemplos: <span>, <a>, <strong>, <em>, <img>.
+  -->
+
+  <h2>1. <code>&lt;div&gt;</code> vs <code>&lt;span&gt;</code></h2>
+
+  <!-- 
+    <div> (Division / Caja de Bloque):
+    Es una caja genérica invisible que se usa para agrupar otros elementos.
+    No tiene significado semántico propio; su función es estructurar y organizar.
+  -->
+  <div>
+    <h3>Caja número 1 (Esto es un div)</h3>
+    <p>Todo lo que esté dentro de este div pertenece a este bloque agrupado.</p>
+  </div>
+
+  <div>
+    <h3>Caja número 2 (Otro div)</h3>
+    <p>Al ser un elemento de bloque, se coloca automáticamente DEBAJO de la caja 1.</p>
+  </div>
+
+  <!-- 
+    <span> (Espacio en Línea):
+    Es un contenedor genérico en línea. Se usa para aislar un pedacito de texto 
+    dentro de un párrafo sin romper la línea.
+  -->
+  <p>
+    En este párrafo podemos envolver solo una 
+    <span>palabra específica</span> o una 
+    <span>frase corta</span> usando la etiqueta span.
+  </p>
+
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    2. EL ATRIBUTO "class" (Clases)
+    ===========================================================================
+    - Es como una "categoría" o "uniforme".
+    - Se puede REPETIR en tantos elementos como quieras.
+    - Un mismo elemento puede tener MÚLTIPLES clases separadas por espacios.
+    - En CSS se seleccionan con un punto: .nombre-clase { ... }
+  -->
+  <h2>2. El Atributo <code>class</code> (Reutilizable)</h2>
+
+  <!-- Ejemplo: Tarjetas de productos o usuarios que comparten el mismo estilo -->
+  <div class="tarjeta">
+    <h3>Producto A</h3>
+    <p>Precio: $25</p>
+    <button class="boton-comprar">Comprar</button>
+  </div>
+
+  <!-- Observa que podemos reutilizar 'tarjeta' y añadir otra clase 'tarjeta-destacada' -->
+  <div class="tarjeta tarjeta-destacada">
+    <h3>Producto B (Oferta)</h3>
+    <p>Precio: $15</p>
+    <button class="boton-comprar">Comprar</button>
+  </div>
+
+  <p>
+    <em>
+      Nota: En CSS escribirías algo como <code>.tarjeta { border: 1px solid gray; }</code> 
+      y ambas tarjetas tomarían el mismo diseño al instante.
+    </em>
+  </p>
+
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    3. EL ATRIBUTO "id" (Identificador Único)
+    ===========================================================================
+    - Es como la CÉDULA / DNI de un elemento.
+    - DEBE SER ÚNICO en toda la página (no debe haber dos elementos con el mismo id).
+    - Se usa para elementos irrepetibles (como el menú principal, una sección única o anclas).
+    - En CSS se selecciona con almohadilla/numeral: #nombre-id { ... }
+    - REGLA DE ORO: Para dar estilos CSS, casi siempre es mejor usar 'class' antes que 'id'.
+  -->
+  <h2>3. El Atributo <code>id</code> (Único)</h2>
+
+  <div id="perfil-usuario-principal">
+    <h3>Perfil del Usuario Administrador</h3>
+    <p>Nombre: Alexis</p>
+    <p>Rol: Desarrollador</p>
+  </div>
+
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    4. RESUMEN: ¿CUÁNDO USAR CADA UNO?
+    ===========================================================================
+    - Usa 'class' cuando varios elementos compartirán el mismo aspecto o función.
+    - Usa 'id' cuando sea un elemento absolutamente único en toda la página.
+    - Usa <div> para crear bloques o cajas agrupadoras.
+    - Usa <span> para seleccionar fragmentos de texto dentro de una línea.
+  -->
+  <h2>4. Resumen Visual de Anidación</h2>
+
+  <!-- Ejemplo de una estructura clásica de un artículo o card -->
+  <div class="noticia">
+    <h3 class="noticia-titulo">Aprender HTML es el primer paso</h3>
+    <p class="noticia-cuerpo">
+      Escribir código ordenado con clases claras (<span class="etiqueta-tag">#Principiante</span>) 
+      hace que tu futuro código CSS sea limpio y fácil de mantener.
+    </p>
+  </div>
+
+  <hr>
+
+  <!-- Navegación -->
+  <p>
+    <a href="03_enlaces_e_imagenes.html">⬅ Lección Anterior: Enlaces e Imágenes</a> | 
+    <a href="index.html">Menú Principal</a> | 
+    <a href="05_listas_y_tablas.html">Siguiente Lección: Listas y Tablas ➡</a>
+  </p>
+
+</body>
+</html>

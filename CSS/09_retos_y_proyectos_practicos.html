@@ -1,0 +1,125 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 09: RETOS Y PROYECTOS PRÁCTICOS EN CSS3
+  =============================================================================
+  "A diseñar se aprende diseñando."
+  
+  Aquí encontrarás 3 proyectos visuales para crear desde cero.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retos Prácticos de CSS3</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f1f5f9; color: #334155; padding: 25px; line-height: 1.6; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .reto-card { background: white; border: 1px solid #e2e8f0; border-left: 6px solid #2563eb; padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .dificultad { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
+    .facil { background: #dcfce7; color: #15803d; }
+    .medio { background: #fef9c3; color: #854d0e; }
+    .dificil { background: #fee2e2; color: #b91c1c; }
+    
+    /* Demostración interactiva en vivo */
+    .demo-box { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; margin: 15px 0; }
+    
+    /* EJEMPLO RETO 1: TARJETA DE PERFIL */
+    .perfil-card { max-width: 280px; margin: 0 auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.08); text-align: center; border: 1px solid #e2e8f0; transition: transform 0.3s ease; }
+    .perfil-card:hover { transform: translateY(-8px); }
+    .perfil-header { background: linear-gradient(135deg, #3b82f6, #8b5cf6); height: 80px; }
+    .perfil-avatar { width: 70px; height: 70px; border-radius: 50%; border: 3px solid white; margin-top: -35px; background: #0f172a; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-left: auto; margin-right: auto; }
+    .perfil-cuerpo { padding: 15px; }
+    .perfil-btn { display: inline-block; margin-top: 10px; padding: 8px 16px; background: #2563eb; color: white; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: bold; }
+
+    /* EJEMPLO RETO 2: TABLA DE PRECIOS FLEXBOX */
+    .pricing-grid { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+    .pricing-card { flex: 1 1 200px; background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; text-align: center; }
+    .pricing-card.destacado { border: 2px solid #3b82f6; transform: scale(1.03); box-shadow: 0 8px 16px rgba(59,130,246,0.15); }
+    .precio { font-size: 1.8rem; font-weight: bold; color: #1e3a8a; margin: 10px 0; }
+
+    .btn-nav { display: inline-block; margin-top: 20px; color: #2563eb; text-decoration: none; font-weight: bold; }
+    details { margin-top: 15px; background: #f8fafc; padding: 12px; border-radius: 6px; }
+    summary { font-weight: bold; cursor: pointer; color: #2563eb; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎨 Taller Práctico: Retos de Diseño en CSS3</h1>
+    <p>La mejor forma de dominar el diseño web es construyendo componentes reales desde cero.</p>
+    <br>
+
+    <!-- RETO 1 -->
+    <div class="reto-card">
+      <span class="dificultad facil">NIVEL: FÁCIL / INTERMEDIO</span>
+      <h2>Reto 1: Tarjeta de Perfil Moderna con Efecto Hover</h2>
+      <p><strong>Objetivo:</strong> Diseñar una tarjeta de usuario con cabecera degradada, avatar circular flotante y efecto de elevación al pasar el mouse:</p>
+      
+      <div class="demo-box">
+        <p style="text-align: center; font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">👇 Resultado esperado interactivo (Pasa el cursor):</p>
+        <div class="perfil-card">
+          <div class="perfil-header"></div>
+          <div class="perfil-avatar">👨‍💻</div>
+          <div class="perfil-cuerpo">
+            <h3>Alexis García</h3>
+            <p style="font-size: 0.85rem; color: #64748b;">Frontend Developer</p>
+            <a href="#" class="perfil-btn">Ver Perfil</a>
+          </div>
+        </div>
+      </div>
+
+      <details>
+        <summary>💡 Consejos para construirlo</summary>
+        <ul>
+          <li>Usa <code>background: linear-gradient(...)</code> para el fondo de la cabecera.</li>
+          <li>Usa <code>border-radius: 50%</code> para hacer el avatar redondo.</li>
+          <li>Usa un margen negativo como <code>margin-top: -35px</code> para superponer el avatar sobre la cabecera.</li>
+          <li>Agrega <code>transition: transform 0.3s ease</code> y <code>:hover { transform: translateY(-8px); }</code>.</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- RETO 2 -->
+    <div class="reto-card">
+      <span class="dificultad medio">NIVEL: INTERMEDIO</span>
+      <h2>Reto 2: Tabla de Precios Comparativa con Flexbox</h2>
+      <p><strong>Objetivo:</strong> Crear 3 planes de suscripción (Básico, Pro y Empresa) distribuidos con Flexbox donde el plan Pro esté destacado visualmente:</p>
+      
+      <div class="demo-box">
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h4>Básico</h4>
+            <div class="precio">$9/mes</div>
+            <p>1 Usuario, 5GB</p>
+          </div>
+          <div class="pricing-card destacado">
+            <span style="background: #3b82f6; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem;">POPULAR</span>
+            <h4>Pro</h4>
+            <div class="precio">$29/mes</div>
+            <p>10 Usuarios, 50GB</p>
+          </div>
+          <div class="pricing-card">
+            <h4>Empresa</h4>
+            <div class="precio">$99/mes</div>
+            <p>Ilimitado, 1TB</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RETO 3 -->
+    <div class="reto-card">
+      <span class="dificultad dificil">NIVEL: DESAFÍO REAL</span>
+      <h2>Reto 3: Landing Page 100% Responsiva con CSS Grid</h2>
+      <p><strong>Objetivo:</strong> Crear la estructura completa de una página de aterrizaje (Navbar pegajosa con <code>position: sticky</code>, Banner Hero centrado con Flexbox, Galería de 4 características con <code>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))</code> y Footer responsivo).</p>
+    </div>
+
+    <hr>
+    <a class="btn-nav" href="index.html">⬅ Volver al Menú de CSS</a>
+  </div>
+
+</body>
+</html>

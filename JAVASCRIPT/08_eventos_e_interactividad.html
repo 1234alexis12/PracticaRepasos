@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 08 - Eventos en JavaScript</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f8fafc; color: #1e293b; padding: 20px; line-height: 1.6; }
+    .container { max-width: 800px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    h1 { color: #854d0e; }
+    .seccion { background: #f1f5f9; padding: 15px; border-radius: 6px; margin: 15px 0; }
+    button { background: #2563eb; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-right: 5px; }
+    button:hover { background: #1d4ed8; }
+    button#btn-reset { background: #64748b; }
+    button#btn-reset:hover { background: #475569; }
+    input { padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px; width: 60%; }
+    .contador-box { font-size: 1.5rem; font-weight: bold; color: #2563eb; margin: 10px 0; }
+    .btn-nav { display: inline-block; margin-top: 20px; color: #2563eb; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ Lección 08: Eventos e Interactividad</h1>
+    <p>Prueba cada una de las interacciones en tiempo real:</p>
+
+    <div class="seccion">
+      <h3>1. Evento Clic: Contador Interactivo</h3>
+      <div class="contador-box">Cuenta: <span id="contador-valor">0</span></div>
+      <button id="btn-incrementar">+ Incrementar</button>
+      <button id="btn-reset">Resetear</button>
+    </div>
+
+    <div class="seccion">
+      <h3>2. Evento Input: Escribe algo abajo</h3>
+      <input type="text" id="input-nombre-en-vivo" placeholder="Escribe tu nombre...">
+      <p id="saludo-en-vivo" style="font-weight: bold; margin-top: 10px; color: #0284c7;">Esperando tu nombre...</p>
+    </div>
+
+    <div class="seccion">
+      <h3>3. Evento Submit (Envío de Formulario)</h3>
+      <form id="mi-formulario">
+        <input type="email" placeholder="Ingresa tu correo" required>
+        <button type="submit">Enviar Formulario</button>
+      </form>
+      <p id="estado-formulario" style="margin-top: 8px; font-weight: bold;"></p>
+    </div>
+
+    <hr>
+    <a class="btn-nav" href="07_manipulacion_del_dom.html">⬅ Lección Anterior</a> | 
+    <a class="btn-nav" href="index.html">Menú Principal</a> | 
+    <a class="btn-nav" href="09_asincronia_y_fetch.html">Siguiente Lección: Asincronía y Fetch ➡</a>
+  </div>
+
+  <script src="08_eventos_e_interactividad.js"></script>
+</body>
+</html>

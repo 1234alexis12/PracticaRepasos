@@ -1,0 +1,89 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 01: ESTRUCTURA BÁSICA DE UN DOCUMENTO HTML
+  =============================================================================
+  /**
+  ¿Qué es HTML?
+  HTML significa "HyperText Markup Language" (Lenguaje de Marcado de Hipertexto).
+  NO es un lenguaje de programación; es un lenguaje de estructura.
+  Define el esqueleto y contenido de una página web (textos, imágenes, enlaces, etc.).
+  
+  ¿Cómo funciona una etiqueta HTML?
+  Casi todas tienen esta anatomía:
+    <etiqueta atributo="valor">Contenido que ve el usuario</etiqueta>
+    - Apertura: <nombre>
+    - Cierre: </nombre>
+    - Atributos: modifican o agregan propiedades a la etiqueta.
+  
+  Algunas etiquetas son "autocontenidas" (no tienen etiqueta de cierre), como:
+    <img />, <input />, <meta />, <br />
+-->
+
+<!-- 
+  1. DOCTYPE:
+  Le indica al navegador en qué versión de HTML está escrito el documento.
+  <!DOCTYPE html> en mayúsculas o minúsculas significa que usamos la versión moderna: HTML5.
+-->
+<!DOCTYPE html>
+
+<!-- 
+  2. ETIQUETA <html>:
+  Es la raíz (padre de todas las demás etiquetas). Todo el código vive dentro de ella.
+  El atributo 'lang="es"' especifica que el idioma principal de la página es español.
+  Esto ayuda a los motores de búsqueda (Google) y lectores de pantalla para personas con discapacidad.
+-->
+<html lang="es">
+
+<!-- 
+  3. ETIQUETA <head> (Cabecera):
+  Contiene "metadatos", es decir, información SOBRE la página que NO se muestra directamente
+  en la pantalla del usuario (configuración, título de pestaña, enlaces a CSS, fuentes, etc.).
+-->
+<head>
+  <!-- 
+    Juego de caracteres UTF-8:
+    Permite mostrar correctamente acentos, letras como la 'ñ' y caracteres especiales.
+  -->
+  <meta charset="UTF-8">
+
+  <!-- 
+    Configuración para móviles (Responsive Design):
+    Asegura que la página se adapte bien al ancho de pantallas de celulares y tablets.
+    Sin esta línea, los teléfonos intentarían mostrar la web como en una pantalla gigante de PC.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    Título de la página:
+    Es el texto que aparece en la pestaña del navegador y en los resultados de Google.
+  -->
+  <title>Lección 01 - Estructura Básica HTML</title>
+</head>
+
+<!-- 
+  4. ETIQUETA <body> (Cuerpo):
+  Aquí va TODO el contenido visible de tu página: textos, botones, imágenes, videos, etc.
+  Lo que esté fuera de <body> NO se verá en la ventana del navegador.
+-->
+<body>
+
+  <!-- Encabezado principal del contenido -->
+  <h1>¡Hola, Mundo! Esta es mi primera página web</h1>
+
+  <!-- Un párrafo de texto -->
+  <p>
+    Todo lo que ves en esta pantalla está dentro de la etiqueta <code>&lt;body&gt;</code>.
+  </p>
+
+  <p>
+    Abre este archivo con tu editor de código para ver las explicaciones detalladas 
+    en los comentarios (las partes verdes que empiezan con <code>&lt;!--</code>).
+  </p>
+
+  <hr>
+
+  <!-- Enlace para volver al menú principal de lecciones -->
+  <p><a href="index.html">⬅ Volver al Menú Principal</a> | <a href="02_textos_y_titulos.html">Siguiente Lección: Textos y Títulos ➡</a></p>
+
+</body>
+</html>

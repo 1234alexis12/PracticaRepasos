@@ -1,0 +1,173 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 02: COLORES, FONDOS Y TIPOGRAFÍA
+  =============================================================================
+  
+  En esta lección aprenderás:
+  1. Formas de representar colores en CSS (Nombres, Hexadecimal, RGB, RGBA, HSL).
+  2. Fondos (color, degradados, imágenes).
+  3. Control tipográfico completo (familias, tamaños, pesos, espaciados y decoraciones).
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 02 - Colores, Fondos y Tipografía en CSS</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      background-color: #f1f5f9;
+      color: #334155;
+    }
+
+    h1 {
+      color: #0f172a;
+      text-align: center;
+    }
+
+    .seccion {
+      background-color: #ffffff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    /* 
+      =========================================================================
+      1. SISTEMAS DE COLOR EN CSS
+      =========================================================================
+    */
+
+    /* A) Nombres Clave (Named Colors): 140 nombres en inglés (red, blue, coral, etc.) */
+    .color-nombre {
+      color: crimson;
+      font-weight: bold;
+    }
+
+    /* B) Hexadecimal (#RRGGBB): 
+          - 2 dígitos para Rojo (00 a FF)
+          - 2 dígitos para Verde (00 a FF)
+          - 2 dígitos para Azul (00 a FF)
+    */
+    .color-hex {
+      color: #2563eb; /* Azul corporativo */
+      font-weight: bold;
+    }
+
+    /* C) RGB y RGBA (Red, Green, Blue, Alpha):
+          - Valores de 0 a 255 para cada canal de luz.
+          - 'Alpha' va de 0.0 (totalmente transparente) a 1.0 (totalmente opaco).
+    */
+    .color-rgba {
+      /* Fondo verde esmeralda con 20% de opacidad (semitransparente) */
+      background-color: rgba(16, 185, 129, 0.2);
+      color: rgb(5, 150, 105);
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    /* 
+      =========================================================================
+      2. FONDOS (BACKGROUNDS)
+      =========================================================================
+    */
+
+    /* Degradado lineal (Linear Gradient) */
+    .caja-degradado {
+      height: 100px;
+      border-radius: 8px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      /* Va desde morado (#7c3aed) hacia azul (#2563eb) con ángulo de 135 grados */
+      background: linear-gradient(135deg, #7c3aed, #2563eb);
+    }
+
+    /* 
+      =========================================================================
+      3. TIPOGRAFÍA Y TEXTO
+      =========================================================================
+    */
+
+    .texto-personalizado {
+      /* Familia tipográfica con fuentes alternativas de respaldo (fallbacks) */
+      font-family: 'Courier New', Courier, monospace;
+      
+      /* Tamaño de la fuente (px, rem, em) */
+      font-size: 1.2rem; /* 1.2 veces el tamaño base del navegador (1.2 * 16px = 19.2px) */
+      
+      /* Grosor de la letra (100 a 900, o normal / bold) */
+      font-weight: 700;
+      
+      /* Altura entre líneas (interlineado) */
+      line-height: 2;
+      
+      /* Espaciado entre letras */
+      letter-spacing: 2px;
+      
+      /* Transformación de mayúsculas / minúsculas */
+      text-transform: uppercase; /* UPPERCASE, lowercase, capitalize */
+      
+      /* Decoración de texto (subrayado, tachado, ninguno) */
+      text-decoration: underline wavy #e11d48; /* Subrayado ondulado rojo */
+    }
+
+    .texto-centrado {
+      text-align: center;
+    }
+    
+    .texto-derecha {
+      text-align: right;
+    }
+
+    .btn-nav {
+      display: inline-block;
+      margin-top: 15px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lección 02: Colores, Fondos y Tipografía</h1>
+
+  <div class="seccion">
+    <h2>1. Formatos de Color</h2>
+    <p class="color-nombre">Este texto usa nombre clave: color: crimson;</p>
+    <p class="color-hex">Este texto usa formato hexadecimal: color: #2563eb;</p>
+    <p class="color-rgba">Este bloque usa RGBA con canal de transparencia: rgba(16, 185, 129, 0.2);</p>
+  </div>
+
+  <div class="seccion">
+    <h2>2. Fondos Modernos y Degradados</h2>
+    <div class="caja-degradado">
+      ¡Fondo con degradado moderno usando <code>linear-gradient</code>!
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>3. Control de Tipografía</h2>
+    <p class="texto-personalizado">
+      Texto con monospace, mayúsculas, espaciado de letras y subrayado ondulado.
+    </p>
+    <p class="texto-centrado">Este texto está centrado con <code>text-align: center;</code>.</p>
+    <p class="texto-derecha">Este texto está alineado a la derecha con <code>text-align: right;</code>.</p>
+  </div>
+
+  <hr>
+  <a class="btn-nav" href="01_sintaxis_y_selectores.html">⬅ Lección Anterior</a> | 
+  <a class="btn-nav" href="index.html">Menú Principal</a> | 
+  <a class="btn-nav" href="03_modelo_de_cajas.html">Siguiente Lección: Modelo de Cajas ➡</a>
+
+</body>
+</html>

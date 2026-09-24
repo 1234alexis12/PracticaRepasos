@@ -1,0 +1,183 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 01: SINTAXIS, FORMAS DE INCLUSIÓN Y SELECTORES BÁSICOS
+  =============================================================================
+  
+  ¿Cómo se escribe una regla CSS?
+  Toda regla CSS tiene 3 partes fundamentales:
+  
+      selector {
+        propiedad: valor;
+      }
+
+  1. SELECTOR: Indica A QUIÉN le vamos a aplicar los estilos (ej. h1, .mi-clase, #mi-id).
+  2. PROPIEDAD: Indica QUÉ característica visual vamos a cambiar (ej. color, font-size).
+  3. VALOR: Indica EL NUEVO ESTADO o configuración que le daremos (ej. red, 20px).
+  
+  * El punto y coma (;) al final de cada declaración es OBLIGATORIO para separar reglas.
+  * Las llaves { } encierran todas las propiedades que afectarán a ese selector.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 01 - Sintaxis y Selectores en CSS</title>
+
+  <!-- 
+    ===========================================================================
+    FORMA 2: CSS INTERNO (Dentro de la etiqueta <style> en el <head>)
+    ===========================================================================
+    Ideal para páginas individuales o cuando estás aprendiendo y experimentando.
+  -->
+  <style>
+    /* 
+      1. SELECTOR UNIVERSAL (*)
+      Afecta a ABSOLUTAMENTE TODOS los elementos del documento HTML.
+      Se usa comúnmente para "resetear" márgenes y definir el modo de cálculo de cajas.
+    */
+    * {
+      box-sizing: border-box; /* Más adelante veremos qué hace en la lección 03 */
+      font-family: Arial, sans-serif; /* Tipografía por defecto para toda la página */
+    }
+
+    /* 
+      2. SELECTOR DE ETIQUETA / TIPO (ej: body, h1, p)
+      Afecta a todas las etiquetas de ese nombre en toda la página.
+    */
+    body {
+      background-color: #f8fafc; /* Color de fondo general (un gris muy claro) */
+      color: #1e293b;            /* Color principal del texto (gris oscuro casi negro) */
+      padding: 20px;             /* Espacio interior de 20 píxeles */
+      line-height: 1.6;          /* Altura de línea para mejorar la legibilidad */
+    }
+
+    h1 {
+      color: #1e40af;            /* Azul oscuro */
+      text-align: center;        /* Centra el texto horizontalmente */
+      border-bottom: 2px solid #3b82f6; /* Línea azul debajo del título */
+      padding-bottom: 10px;
+    }
+
+    /* 
+      3. SELECTOR DE CLASE (.nombre-clase)
+      Se escribe con un PUNTO al inicio.
+      Afecta a cualquier elemento HTML que tenga el atributo class="nombre-clase".
+      ¡Es el selector más usado en desarrollo web moderno porque se puede REUTILIZAR!
+    */
+    .tarjeta {
+      background-color: #ffffff; /* Fondo blanco */
+      border: 1px solid #cbd5e1; /* Borde gris fino */
+      border-radius: 8px;        /* Esquinas redondeadas */
+      padding: 16px;             /* Relleno interior */
+      margin-bottom: 16px;       /* Separación respecto a la siguiente caja */
+    }
+
+    .destacado {
+      color: #b91c1c;            /* Texto rojo oscuro */
+      font-weight: bold;         /* Texto en negrita */
+      background-color: #fee2e2; /* Fondo rosado suave */
+      padding: 2px 6px;          /* Pequeño colchón alrededor del texto */
+      border-radius: 4px;        /* Bordes redondeados */
+    }
+
+    /* 
+      4. SELECTOR DE IDENTIFICADOR (#nombre-id)
+      Se escribe con un NUMERAL (#) al inicio.
+      Afecta al único elemento HTML con id="nombre-id".
+      REGLA DE ORO: Un ID debe ser ÚNICO en toda la página (no se repite).
+      Tiene mayor "especificidad" (fuerza/prioridad) que una clase.
+    */
+    #aviso-urgente {
+      background-color: #fef3c7; /* Fondo amarillo claro de alerta */
+      border: 2px dashed #f59e0b;/* Borde discontinuo naranja */
+      padding: 12px;
+      margin-bottom: 16px;
+      font-weight: bold;
+    }
+
+    /* 
+      5. SELECTOR AGRUPADO (separado por comas)
+      Permite aplicar EXACTAMENTE los mismos estilos a múltiples selectores a la vez.
+      Ahorra código y evita duplicar líneas.
+    */
+    h2, h3 {
+      color: #0f172a;
+      margin-top: 15px;
+      margin-bottom: 8px;
+    }
+
+    /* 
+      6. SELECTOR DESCENDIENTE (separado por un espacio)
+      Afecta a elementos que están DENTRO de otro contenedor específico.
+      Ejemplo: ".caja-especial p" solo afectará a los <p> que vivan dentro de ".caja-especial".
+    */
+    .caja-especial p {
+      color: #047857;            /* Verde esmeralda */
+      font-style: italic;        /* Texto en cursiva */
+    }
+
+    /* Enlaces de navegación */
+    .btn-nav {
+      display: inline-block;
+      margin-top: 20px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+
+  <!-- 
+    ===========================================================================
+    FORMA 3: CSS EXTERNO (La mejor práctica en proyectos reales)
+    ===========================================================================
+    Se vincula un archivo .css independiente mediante la etiqueta <link>.
+    Ejemplo: <link rel="stylesheet" href="estilos.css">
+    Ventaja: Permite que 1 solo archivo CSS estilice 50 páginas distintas.
+  -->
+</head>
+<body>
+
+  <h1>Lección 01: Sintaxis y Selectores CSS</h1>
+
+  <!-- 
+    ===========================================================================
+    FORMA 1: CSS EN LÍNEA (Inline Styles)
+    ===========================================================================
+    Se escribe directamente dentro de la etiqueta HTML usando el atributo style="...".
+    DESVENTAJA: Es difícil de mantener y ensucia el código HTML. Úsalo solo para pruebas rápidas.
+  -->
+  <p style="color: purple; font-size: 18px;">
+    👉 Este párrafo está estilizado con <strong>CSS En Línea</strong> (style="...").
+  </p>
+
+  <hr>
+
+  <div id="aviso-urgente">
+    🔔 Este bloque usa un <strong>Selector de ID (#aviso-urgente)</strong>. Solo existe uno como este en la página.
+  </div>
+
+  <div class="tarjeta">
+    <h2>Selector de Clase (.tarjeta)</h2>
+    <p>
+      Esta caja tiene la clase <code>tarjeta</code>. Podemos reutilizar esta clase cuantas veces queramos.
+    </p>
+    <p>
+      Aquí usamos otra clase para <span class="destacado">resaltar este texto</span> en rojo y con fondo rosa.
+    </p>
+  </div>
+
+  <div class="tarjeta caja-especial">
+    <h2>Otra Tarjeta con Clase Compuesta</h2>
+    <p>
+      Este párrafo está dentro de <code>.caja-especial</code>, por eso sale en color verde y cursiva gracias al <strong>selector descendiente</strong>.
+    </p>
+  </div>
+
+  <hr>
+  <a class="btn-nav" href="index.html">⬅ Volver al Menú Principal</a> | 
+  <a class="btn-nav" href="02_colores_fondos_y_textos.html">Siguiente Lección: Colores y Textos ➡</a>
+
+</body>
+</html>

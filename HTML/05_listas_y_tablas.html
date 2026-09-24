@@ -1,0 +1,146 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 05: LISTAS Y TABLAS DE DATOS
+  =============================================================================
+  
+  Las listas se usan muchísimo en la web moderna (¡casi todos los menús de
+  navegación son listas!).
+  Las tablas se usan para mostrar datos estructurados (como hojas de Excel).
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 05 - Listas y Tablas</title>
+</head>
+<body>
+
+  <h1>Listas y Tablas en HTML</h1>
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    1. LISTAS DESORDENADAS: <ul> (Unordered List)
+    ===========================================================================
+    - Se usan cuando el orden de los elementos NO altera el significado.
+    - Por defecto, el navegador coloca viñetas (puntos negros).
+    - Cada elemento dentro de la lista DEBE ser una etiqueta <li> (List Item).
+    - ¡DATO CLAVE PARA CSS! Los menús de navegación de casi todas las páginas web
+      se crean con un <ul> y luego con CSS se les quitan los puntos y se ponen en fila.
+  -->
+  <h2>1. Lista Desordenada (<code>&lt;ul&gt;</code>)</h2>
+  
+  <ul>
+    <li>HTML5 (Estructura)</li>
+    <li>CSS3 (Estilos y Diseño)</li>
+    <li>JavaScript (Interactividad)</li>
+  </ul>
+
+  <!-- 
+    ===========================================================================
+    2. LISTAS ORDENADAS: <ol> (Ordered List)
+    ===========================================================================
+    - Se usan cuando la secuencia o el orden numérico SÍ es importante
+      (recetas de cocina, instrucciones paso a paso, rankings).
+    - El navegador numera automáticamente cada <li> (1, 2, 3...).
+  -->
+  <h2>2. Lista Ordenada (<code>&lt;ol&gt;</code>)</h2>
+
+  <ol>
+    <li>Abrir el editor de código.</li>
+    <li>Escribir la estructura básica HTML.</li>
+    <li>Abrir el archivo en el navegador para ver los resultados.</li>
+  </ol>
+
+  <!-- 
+    3. LISTAS ANIDADAS (Listas dentro de listas):
+    Muy útil para índices jerárquicos o menús desplegables.
+  -->
+  <h2>3. Listas Anidadas</h2>
+  <ul>
+    <li>
+      Frontend
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </li>
+    <li>
+      Backend
+      <ul>
+        <li>Node.js</li>
+        <li>Python</li>
+        <li>Bases de Datos</li>
+      </ul>
+    </li>
+  </ul>
+
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    4. TABLAS DE DATOS: <table>
+    ===========================================================================
+    REGLA DE ORO: Las tablas NUNCA deben usarse para maquetar o diseñar la página
+    (eso se hacía en los años 90).
+    Las tablas SOLO deben usarse para mostrar DATOS TABULARES (horarios, reportes,
+    comparativas de precios, listas de calificaciones).
+
+    Anatomía de una tabla profesional:
+    - <table>: Contenedor general.
+    - <caption>: Título o descripción accesible de la tabla.
+    - <thead>: Encabezado superior con los títulos de las columnas.
+    - <tbody>: Cuerpo donde van las filas de datos.
+    - <tr>: Table Row (Fila).
+    - <th>: Table Header (Celda de título de columna/fila, texto negrita y semántico).
+    - <td>: Table Data (Celda normal de dato individual).
+  -->
+  <h2>4. Tablas de Datos</h2>
+
+  <!-- Borde visible temporal solo para que puedas apreciarla sin CSS -->
+  <table border="1" cellpadding="8" cellspacing="0">
+    <caption><strong>Tabla Comparativa de Cursos</strong></caption>
+
+    <!-- <thead>: Encabezado de la tabla -->
+    <thead>
+      <tr>
+        <th>Tecnología</th>
+        <th>Propósito</th>
+        <th>Nivel</th>
+      </tr>
+    </thead>
+
+    <!-- <tbody>: Contenido de datos -->
+    <tbody>
+      <tr>
+        <td>HTML</td>
+        <td>Estructura y contenido semántico</td>
+        <td>Principiante</td>
+      </tr>
+      <tr>
+        <td>CSS</td>
+        <td>Colores, diseño, tipografías y efectos</td>
+        <td>Intermedio</td>
+      </tr>
+      <tr>
+        <td>JavaScript</td>
+        <td>Lógica dinámica, interactividad y eventos</td>
+        <td>Avanzado</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- Navegación -->
+  <p>
+    <a href="04_contenedores_y_clases.html">⬅ Lección Anterior: Contenedores y Clases</a> | 
+    <a href="index.html">Menú Principal</a> | 
+    <a href="06_formularios_e_inputs.html">Siguiente Lección: Formularios e Inputs ➡</a>
+  </p>
+
+</body>
+</html>

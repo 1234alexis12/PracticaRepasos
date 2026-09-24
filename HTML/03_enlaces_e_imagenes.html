@@ -1,0 +1,137 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 03: ENLACES E IMÁGENES (VINCULANDO LA WEB)
+  =============================================================================
+  
+  La "telaraña" de la web existe gracias a los enlaces (hipervínculos).
+  Y el contenido multimedia hace que las páginas sean visualmente atractivas.
+  Aquí aprenderás cómo conectar páginas y cómo insertar imágenes correctamente.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 03 - Enlaces e Imágenes</title>
+</head>
+<body>
+
+  <h1>Enlaces (Links) e Imágenes en HTML</h1>
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    1. LA ETIQUETA DE ENLACE: <a> (Anchor)
+    ===========================================================================
+    El atributo principal y obligatorio es 'href' (Hypertext REFerence).
+    Indica hacia dónde debe viajar el usuario cuando hace clic en el enlace.
+  -->
+  <h2>1. Tipos de Enlaces</h2>
+
+  <!-- 
+    A) Enlace Absoluto (hacia otra página en Internet):
+    Requiere el protocolo completo (https:// o http://).
+    
+    Atributo 'target="_blank"': Abre la página en una pestaña NUEVA del navegador.
+    Atributo 'rel="noopener noreferrer"': MEDIDA DE SEGURIDAD obligatoria cuando
+    usas target="_blank" para evitar que la página externa controle tu pestaña original.
+  -->
+  <p>
+    <strong>Enlace Externo (en pestaña nueva):</strong><br>
+    Visita el buscador oficial de 
+    <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
+      Google (se abre en nueva pestaña)
+    </a>
+  </p>
+
+  <!-- 
+    B) Enlace Relativo (hacia otro archivo dentro de tu mismo proyecto):
+    No necesitas escribir https://..., solo el nombre del archivo.
+  -->
+  <p>
+    <strong>Enlace Relativo (misma carpeta):</strong><br>
+    Repasar la 
+    <a href="01_estructura_basica.html">Lección 01: Estructura Básica</a>.
+  </p>
+
+  <!-- 
+    C) Enlaces Especiales (Correo y Teléfono):
+    - mailto: abre el cliente de correo del usuario (Outlook, Gmail, etc.)
+    - tel: en un celular, abre la aplicación para hacer la llamada
+  -->
+  <p>
+    <strong>Enlaces de contacto rápido:</strong><br>
+    Escríbenos a: <a href="mailto:contacto@ejemplo.com">contacto@ejemplo.com</a><br>
+    Llámanos al: <a href="tel:+123456789">+1 234 56789</a>
+  </p>
+
+  <!-- 
+    D) Enlace Interno (Anclas / Bookmarks):
+    Permite saltar a una parte específica de la MISMA página usando el '#' y un 'id'.
+  -->
+  <p>
+    <strong>Saltar dentro de esta página:</strong><br>
+    👉 <a href="#seccion-final">Hacer clic para saltar directo a la sección final</a>
+  </p>
+
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    2. LA ETIQUETA DE IMAGEN: <img />
+    ===========================================================================
+    - Es una etiqueta AUTOCONTENIDA (no tiene </img>).
+    - Atributo 'src' (Source): La ruta del archivo o URL de la imagen.
+    - Atributo 'alt' (Alternative Text): OBLIGATORIO por accesibilidad y SEO.
+      Describe la imagen para personas con discapacidad visual que usan lectores de pantalla,
+      o por si la imagen no carga por mala conexión a internet.
+    - Atributos 'width' y 'height': Dimensión en píxeles. Ayudan al navegador a reservar el
+      espacio exacto antes de que la imagen termine de descargar (evita saltos de pantalla).
+  -->
+  <h2>2. Insertar Imágenes</h2>
+
+  <h3>Imagen desde una URL de internet:</h3>
+  <img 
+    src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&auto=format&fit=crop&q=60" 
+    alt="Laptop abierta sobre una mesa mostrando código en la pantalla" 
+    width="450" 
+    height="300"
+  >
+  <p><small>Nota: Siempre escribe un <code>alt</code> descriptivo. Nunca pongas "foto" o "imagen".</small></p>
+
+  <hr>
+
+  <!-- 
+    3. IMAGEN CLICABLE (Imagen dentro de un enlace):
+    Simplemente envuelves la etiqueta <img> dentro de una etiqueta <a>.
+  -->
+  <h2>3. Imagen que funciona como Enlace</h2>
+  <p>Haz clic en la imagen para ir a Wikipedia:</p>
+  <a href="https://es.wikipedia.org/wiki/HTML" target="_blank" rel="noopener noreferrer">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/240px-HTML5_logo_and_wordmark.svg.png" 
+      alt="Logotipo oficial de HTML5" 
+      width="120"
+    >
+  </a>
+
+  <hr>
+
+  <!-- Destino del enlace interno que vimos arriba -->
+  <div id="seccion-final">
+    <h2>📍 Sección Final de la Lección</h2>
+    <p>¡Llegaste al ancla interna porque este elemento tiene el atributo <code>id="seccion-final"</code>!</p>
+  </div>
+
+  <hr>
+
+  <!-- Navegación -->
+  <p>
+    <a href="02_textos_y_titulos.html">⬅ Lección Anterior: Textos y Títulos</a> | 
+    <a href="index.html">Menú Principal</a> | 
+    <a href="04_contenedores_y_clases.html">Siguiente Lección: Contenedores y Clases ➡</a>
+  </p>
+
+</body>
+</html>

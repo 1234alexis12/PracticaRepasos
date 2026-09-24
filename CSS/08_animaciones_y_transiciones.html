@@ -1,0 +1,188 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 08: TRANSICIONES, TRANSFORMACIONES Y ANIMACIONES
+  =============================================================================
+  
+  En esta lección aprenderás a dar movimiento y vida a tus páginas web:
+  
+  1. TRANSICIONES (transition):
+     Permiten cambiar suavemente los valores de las propiedades de CSS durante un tiempo determinado.
+     Sintaxis: transition: [propiedad] [duración] [curva-de-tiempo] [retraso];
+     Ejemplo: transition: all 0.3s ease;
+
+  2. TRANSFORMACIONES (transform):
+     Modifican la forma, orientación o posición visual sin alterar el flujo del documento.
+     - translate(x, y): Mueve el elemento.
+     - scale(n): Agranda o achica el elemento (ej: 1.1 es 10% más grande).
+     - rotate(deg): Gira el elemento en grados (ej: 45deg, 360deg).
+
+  3. ANIMACIONES CON @KEYFRAMES:
+     Permiten animaciones complejas de múltiples pasos que pueden reproducirse en bucle automático.
+     Sintaxis:
+       @keyframes nombreAnimacion {
+         0%   { transform: scale(1); }
+         50%  { transform: scale(1.2); }
+         100% { transform: scale(1); }
+       }
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 08 - Animaciones y Transiciones en CSS</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .seccion {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    /* 
+      1. BOTÓN CON TRANSICIÓN INTERACTIVA (HOVER)
+    */
+    .btn-interactivo {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      /* Transición suave de 0.3 segundos para todos los cambios */
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    /* Efecto al pasar el cursor (Hover) */
+    .btn-interactivo:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-4px); /* Se eleva 4px hacia arriba */
+      box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+    }
+
+    /* Efecto al hacer clic sostenido (Active) */
+    .btn-interactivo:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+    }
+
+    /* 
+      2. TARJETA GIRATORIA Y ESCALABLE CON TRANSFORM
+    */
+    .caja-transform {
+      width: 150px;
+      height: 100px;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border-radius: 8px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .caja-transform:hover {
+      transform: scale(1.15) rotate(6deg); /* Crece 15% y rota 6 grados */
+    }
+
+    /* 
+      3. ANIMACIÓN CONTINUA CON @KEYFRAMES (Efecto Pulso / Latido)
+    */
+    @keyframes latido {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+      }
+      50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 15px rgba(239, 68, 68, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+      }
+    }
+
+    .circulo-pulso {
+      width: 80px;
+      height: 80px;
+      background-color: #ef4444;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin: 20px auto;
+      /* Aplica la animación: nombre, duración (1.5s), curva (ease-in-out), repetición infinita */
+      animation: latido 1.5s ease-in-out infinite;
+    }
+
+    .btn-nav {
+      display: inline-block;
+      margin-top: 15px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lección 08: Transiciones y Animaciones en CSS</h1>
+
+  <div class="seccion">
+    <h2>1. Transición Suave en Botón (Pasa el cursor por encima)</h2>
+    <p>Usa <code>transition</code> junto con la pseudo-clase <code>:hover</code>:</p>
+    <br>
+    <button class="btn-interactivo">Pasa el Mouse Aquí</button>
+  </div>
+
+  <div class="seccion">
+    <h2>2. Transformaciones (Escalar y Rotar)</h2>
+    <p>Pasa el ratón por encima de la caja para ver <code>transform: scale(1.15) rotate(6deg);</code>:</p>
+    <div class="caja-transform">
+      ¡Mírame!
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>3. Animación Infinita con <code>@keyframes</code></h2>
+    <p>Esta esfera pulsa y late continuamente sin necesidad de interacción ni de JavaScript:</p>
+    <div class="circulo-pulso">
+      ❤️ LIVE
+    </div>
+  </div>
+
+  <hr>
+  <a class="btn-nav" href="07_responsive_design_y_media_queries.html">⬅ Lección Anterior</a> | 
+  <a class="btn-nav" href="index.html">Menú Principal de CSS</a>
+
+</body>
+</html>

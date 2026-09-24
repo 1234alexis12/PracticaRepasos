@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 09 - Asincronía y Fetch API (JS)</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f8fafc; color: #1e293b; padding: 20px; line-height: 1.6; }
+    .container { max-width: 800px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    h1 { color: #854d0e; }
+    .seccion { background: #f1f5f9; padding: 15px; border-radius: 6px; margin: 15px 0; }
+    button { background: #2563eb; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    button:hover { background: #1d4ed8; }
+    .consola-output { background: #0f172a; color: #38bdf8; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.95rem; white-space: pre-wrap; margin-top: 15px; }
+    .btn-nav { display: inline-block; margin-top: 20px; color: #2563eb; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ Lección 09: Asincronía, Async/Await y Fetch API</h1>
+    <p>Aprende cómo tu aplicación puede comunicarse con servidores externos en internet:</p>
+
+    <div class="seccion">
+      <h3>1. Consumo de API en Vivo (Fetch)</h3>
+      <p>Haz clic en el botón para solicitar datos reales a un servidor público usando <code>async/await</code>:</p>
+      <br>
+      <button onclick="obtenerUsuariosDeInternet()">🌐 Consultar Usuarios Vía API</button>
+      
+      <div id="resultado-api" style="margin-top: 15px; font-style: italic; color: #64748b;">
+        Presiona el botón para cargar datos...
+      </div>
+    </div>
+
+    <div class="seccion">
+      <h3>2. Registro de Consola:</h3>
+      <div class="consola-output" id="consola"></div>
+    </div>
+
+    <hr>
+    <a class="btn-nav" href="08_eventos_e_interactividad.html">⬅ Lección Anterior</a> | 
+    <a class="btn-nav" href="index.html">Menú Principal de JavaScript</a>
+  </div>
+
+  <script>
+    const salida = document.getElementById('consola');
+    const logOriginal = console.log;
+    console.log = function(...args) {
+      logOriginal.apply(console, args);
+      salida.innerHTML += args.map(a => typeof a === 'object' ? JSON.stringify(a) : a).join(' ') + "\n";
+    };
+  </script>
+  <script src="09_asincronia_y_fetch.js"></script>
+</body>
+</html>

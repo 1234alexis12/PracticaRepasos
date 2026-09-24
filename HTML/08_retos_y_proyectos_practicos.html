@@ -1,0 +1,128 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 08: RETOS Y PROYECTOS PRÁCTICOS EN HTML5
+  =============================================================================
+  "A programar se aprende programando."
+  
+  Aquí tienes 3 proyectos reales para construir. No mires las soluciones
+  hasta haber intentado construirlos tú mismo/a en un archivo nuevo.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retos Prácticos de HTML</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 25px; background-color: #f8fafc; color: #1e293b; }
+    .reto-card { background: white; border: 1px solid #e2e8f0; border-left: 6px solid #2563eb; padding: 20px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .dificultad { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
+    .facil { background: #dcfce7; color: #15803d; }
+    .medio { background: #fef9c3; color: #854d0e; }
+    .dificil { background: #fee2e2; color: #b91c1c; }
+    details { margin-top: 15px; background: #f1f5f9; padding: 12px; border-radius: 6px; }
+    summary { font-weight: bold; cursor: pointer; color: #2563eb; }
+    code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    .btn-nav { display: inline-block; margin-top: 20px; color: #2563eb; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>🛠️ Taller Práctico: Retos de Construcción en HTML</h1>
+  <p>Pon a prueba tus conocimientos. Crea archivos nuevos (ej: <code>mi_perfil.html</code>) e intenta resolver cada reto.</p>
+
+  <!-- RETO 1 -->
+  <div class="reto-card">
+    <span class="dificultad facil">NIVEL: FÁCIL</span>
+    <h2>Reto 1: Tu Ficha de Perfil Profesional</h2>
+    <p><strong>Objetivo:</strong> Crear una página personal que contenga:</p>
+    <ul>
+      <li>Un encabezado principal <code>&lt;h1&gt;</code> con tu nombre.</li>
+      <li>Una imagen de perfil <code>&lt;img&gt;</code> con texto alternativo <code>alt</code>.</li>
+      <li>Un párrafo <code>&lt;p&gt;</code> con una breve biografía usando <code>&lt;strong&gt;</code> y <code>&lt;em&gt;</code>.</li>
+      <li>Una lista desordenada <code>&lt;ul&gt;</code> con tus 3 tecnologías favoritas.</li>
+      <li>Un enlace <code>&lt;a&gt;</code> hacia tu cuenta de GitHub o LinkedIn con <code>target="_blank"</code>.</li>
+    </ul>
+
+    <details>
+      <summary>💡 Ver Pistas / Solución Sugerida</summary>
+      <pre><code>&lt;h1&gt;Alexis - Desarrollador Web&lt;/h1&gt;
+&lt;img src="https://via.placeholder.com/150" alt="Foto de perfil de Alexis"&gt;
+&lt;p&gt;¡Hola! Soy un &lt;strong&gt;entusiasta&lt;/strong&gt; del código aprendiendo &lt;em&gt;HTML5&lt;/em&gt;.&lt;/p&gt;
+&lt;h3&gt;Mis Habilidades:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTML Semántico&lt;/li&gt;
+  &lt;li&gt;CSS Moderno&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://github.com" target="_blank" rel="noopener noreferrer"&gt;Ver mi GitHub&lt;/a&gt;&lt;/p&gt;</code></pre>
+    </details>
+  </div>
+
+  <!-- RETO 2 -->
+  <div class="reto-card">
+    <span class="dificultad medio">NIVEL: INTERMEDIO</span>
+    <h2>Reto 2: Formulario de Registro con Validaciones</h2>
+    <p><strong>Objetivo:</strong> Crear un formulario de registro completo con:</p>
+    <ul>
+      <li>Campo para Nombre completo (texto requerido).</li>
+      <li>Campo para Correo electrónico (tipo <code>email</code> requerido).</li>
+      <li>Campo para Contraseña (tipo <code>password</code> con mínimo 8 caracteres).</li>
+      <li>Menú desplegable <code>&lt;select&gt;</code> para elegir país (México, España, Colombia, Argentina, etc.).</li>
+      <li>Casilla de verificación <code>checkbox</code> para "Acepto los términos y condiciones" (requerido).</li>
+      <li>Botón de tipo <code>submit</code>.</li>
+    </ul>
+
+    <details>
+      <summary>💡 Ver Pistas / Solución Sugerida</summary>
+      <pre><code>&lt;form action="#" method="POST"&gt;
+  &lt;div&gt;
+    &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez"&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for="email"&gt;Correo:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for="pass"&gt;Contraseña:&lt;/label&gt;
+    &lt;input type="password" id="pass" name="pass" minlength="8" required&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for="pais"&gt;País:&lt;/label&gt;
+    &lt;select id="pais" name="pais" required&gt;
+      &lt;option value=""&gt;Selecciona un país...&lt;/option&gt;
+      &lt;option value="ES"&gt;España&lt;/option&gt;
+      &lt;option value="MX"&gt;México&lt;/option&gt;
+      &lt;option value="CO"&gt;Colombia&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label&gt;
+      &lt;input type="checkbox" name="terminos" required&gt; Acepto los términos
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button type="submit"&gt;Registrarse&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    </details>
+  </div>
+
+  <!-- RETO 3 -->
+  <div class="reto-card">
+    <span class="dificultad dificil">NIVEL: DESAFÍO REAL</span>
+    <h2>Reto 3: Estructura Semántica de un Blog Completo</h2>
+    <p><strong>Objetivo:</strong> Maquetar una página de artículo de blog usando exclusivamente etiquetas semánticas:</p>
+    <ul>
+      <li><code>&lt;header&gt;</code> con el logotipo y barra <code>&lt;nav&gt;</code>.</li>
+      <li><code>&lt;main&gt;</code> conteniendo el <code>&lt;article&gt;</code> principal del blog.</li>
+      <li>El artículo debe tener <code>&lt;h1&gt;</code>, fecha en <code>&lt;time&gt;</code>, párrafos, citas <code>&lt;blockquote&gt;</code> y una imagen dentro de <code>&lt;figure&gt;</code> con <code>&lt;figcaption&gt;</code>.</li>
+      <li>Una barra lateral <code>&lt;aside&gt;</code> con "Artículos relacionados".</li>
+      <li>Un <code>&lt;footer&gt;</code> con derechos de autor y enlaces de privacidad.</li>
+    </ul>
+  </div>
+
+  <hr>
+  <a class="btn-nav" href="index.html">⬅ Volver al Menú de HTML</a>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 06: FORMULARIOS, INPUTS Y CONTROLES DE USUARIO
+  =============================================================================
+  
+  Los formularios son el medio principal para recibir información del usuario:
+  inicios de sesión, registros, búsquedas, pagos y mensajes de contacto.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 06 - Formularios e Inputs</title>
+</head>
+<body>
+
+  <h1>Formularios y Entradas de Datos (Inputs)</h1>
+  <p>Aprende a capturar datos de usuarios con controles interactivos nativos.</p>
+  <hr>
+
+  <!-- 
+    ===========================================================================
+    1. LA ETIQUETA <form>
+    ===========================================================================
+    - Envuelve todos los campos del formulario.
+    - Atributo 'action': La URL o archivo que procesará los datos (ej: un script en el servidor).
+    - Atributo 'method':
+      * "GET": Envía los datos visibles en la barra de direcciones (ideal para búsquedas).
+      * "POST": Envía los datos ocultos en la petición (ideal para contraseñas y registros).
+  -->
+  <form action="#" method="POST">
+
+    <!-- 
+      =========================================================================
+      2. LA ETIQUETA <label> Y EL ATRIBUTO 'for'
+      =========================================================================
+      BUENA PRÁCTICA INDISPENSABLE:
+      - Cada campo de entrada debe tener su etiqueta <label>.
+      - El atributo 'for' del label DEBE coincidir exactamente con el 'id' del input.
+      - BENEFICIO: Si el usuario hace clic en el texto del label, el cursor se coloca
+        automáticamente dentro del input (muy útil en celulares y para accesibilidad).
+    -->
+
+    <!-- Campo de Texto Simple -->
+    <div>
+      <label for="nombre">Nombre Completo:</label><br>
+      <!-- 
+        Atributos de <input>:
+        - type: Define qué tipo de dato ingresará el usuario.
+        - id: Identificador único que se conecta con el 'for' del <label>.
+        - name: El nombre de la variable con la que llegará el dato al servidor.
+        - placeholder: Texto de sugerencia que desaparece cuando el usuario escribe.
+        - required: Hace que el campo sea obligatorio antes de enviar.
+      -->
+      <input 
+        type="text" 
+        id="nombre" 
+        name="nombre" 
+        placeholder="Ej: Alexis Pérez" 
+        required
+      >
+    </div>
+    <br>
+
+    <!-- Campo de Correo Electrónico -->
+    <div>
+      <label for="correo">Correo Electrónico:</label><br>
+      <!-- type="email" valida automáticamente que incluya '@' y un dominio válido -->
+      <input 
+        type="email" 
+        id="correo" 
+        name="correo" 
+        placeholder="ejemplo@correo.com" 
+        required
+      >
+    </div>
+    <br>
+
+    <!-- Campo de Contraseña -->
+    <div>
+      <label for="clave">Contraseña Secreta:</label><br>
+      <!-- type="password" oculta los caracteres con asteriscos o puntos -->
+      <input 
+        type="password" 
+        id="clave" 
+        name="clave" 
+        minlength="6"
+        placeholder="Mínimo 6 caracteres" 
+        required
+      >
+    </div>
+    <br>
+
+    <!-- Campo Numérico -->
+    <div>
+      <label for="edad">Edad:</label><br>
+      <!-- type="number" solo permite números y flechas para subir/bajar -->
+      <input 
+        type="number" 
+        id="edad" 
+        name="edad" 
+        min="18" 
+        max="99" 
+        value="25"
+      >
+    </div>
+    <br>
+
+    <!-- Campo de Fecha -->
+    <div>
+      <label for="fecha-nacimiento">Fecha de Nacimiento:</label><br>
+      <!-- type="date" despliega un calendario interactivo nativo -->
+      <input type="date" id="fecha-nacimiento" name="fecha_nacimiento">
+    </div>
+    <br>
+
+    <!-- 
+      =========================================================================
+      3. SELECT (Menú Desplegable)
+      =========================================================================
+    -->
+    <div>
+      <label for="pais">Selecciona tu País:</label><br>
+      <select id="pais" name="pais">
+        <option value="" disabled selected>-- Elige una opción --</option>
+        <option value="mx">México</option>
+        <option value="co">Colombia</option>
+        <option value="es">España</option>
+        <option value="ar">Argentina</option>
+      </select>
+    </div>
+    <br>
+
+    <!-- 
+      =========================================================================
+      4. RADIO BUTTONS (Selección única)
+      =========================================================================
+      Para que los radio buttons sean mutuamente excluyentes (solo puedas elegir uno),
+      DEBEN compartir exactamente el mismo valor en el atributo 'name'.
+    -->
+    <fieldset>
+      <legend>Nivel de Experiencia en Programación (Elige uno):</legend>
+      
+      <input type="radio" id="exp-ninguna" name="experiencia" value="ninguna" checked>
+      <label for="exp-ninguna">Desde cero</label><br>
+
+      <input type="radio" id="exp-basica" name="experiencia" value="basica">
+      <label for="exp-basica">Conocimientos básicos</label><br>
+
+      <input type="radio" id="exp-avanzada" name="experiencia" value="avanzada">
+      <label for="exp-avanzada">Avanzado</label>
+    </fieldset>
+    <br>
+
+    <!-- 
+      =========================================================================
+      5. CHECKBOXES (Casillas de verificación múltiple)
+      =========================================================================
+      El usuario puede marcar una, varias o ninguna.
+    -->
+    <fieldset>
+      <legend>Intereses para aprender (Puedes marcar varios):</legend>
+      
+      <input type="checkbox" id="interes-css" name="intereses" value="css">
+      <label for="interes-css">Aprender CSS para diseño</label><br>
+
+      <input type="checkbox" id="interes-js" name="intereses" value="javascript">
+      <label for="interes-js">Aprender JavaScript para lógica</label><br>
+
+      <input type="checkbox" id="interes-react" name="intereses" value="react">
+      <label for="interes-react">Aprender Frameworks (React, Vue)</label>
+    </fieldset>
+    <br>
+
+    <!-- 
+      =========================================================================
+      6. TEXTAREA (Área de texto de múltiples líneas)
+      =========================================================================
+      A diferencia del input normal, tiene etiqueta de cierre </textarea>.
+    -->
+    <div>
+      <label for="comentarios">Mensaje o comentarios adicionales:</label><br>
+      <textarea 
+        id="comentarios" 
+        name="comentarios" 
+        rows="4" 
+        cols="50" 
+        placeholder="Escribe tu mensaje aquí..."
+      ></textarea>
+    </div>
+    <br>
+
+    <!-- 
+      =========================================================================
+      7. BOTONES DE ENVÍO Y REINICIO
+      =========================================================================
+      - type="submit": Envía la información del formulario.
+      - type="reset": Limpia todos los campos devolviéndolos a su valor inicial.
+      - type="button": Botón neutro para usar con JavaScript.
+    -->
+    <button type="submit">🚀 Enviar Formulario</button>
+    <button type="reset">Limpiar Campos</button>
+
+  </form>
+
+  <hr>
+
+  <!-- Navegación -->
+  <p>
+    <a href="05_listas_y_tablas.html">⬅ Lección Anterior: Listas y Tablas</a> | 
+    <a href="index.html">Menú Principal</a> | 
+    <a href="07_html_semantico.html">Siguiente Lección: HTML Semántico Moderno ➡</a>
+  </p>
+
+</body>
+</html>

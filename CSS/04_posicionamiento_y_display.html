@@ -1,0 +1,191 @@
+<!-- 
+  =============================================================================
+  LECCIÓN 04: DISPLAY Y POSICIONAMIENTO EN CSS
+  =============================================================================
+  
+  Esta lección cubre dos pilares del flujo visual:
+  
+  1. LA PROPIEDAD DISPLAY:
+     - block: Ocupa toda la línea, respeta width y height.
+     - inline: Ocupa solo el ancho del texto, IGNORA width y height y márgenes verticales.
+     - inline-block: Se alinea en línea con otros elementos PERO sí respeta width, height y márgenes.
+     - none: Oculta el elemento completamente y no ocupa espacio en la pantalla.
+
+  2. LA PROPIEDAD POSITION:
+     - static (por defecto): Sigue el flujo normal del documento. Las propiedades top/left/right/bottom NO funcionan.
+     - relative: Se mueve RESPECTO A SU POSICIÓN ORIGINAL sin afectar a los elementos vecinos.
+     - absolute: Se sale del flujo normal y se posiciona RESPECTO A SU CONTENEDOR PADRE más cercano que tenga position: relative (o al <body> si no hay ninguno).
+     - fixed: Se queda "pegado" en una posición fija DE LA PANTALLA/VENTANA, sin importar cuánto scroll hagas.
+     - sticky: Se comporta como 'relative' hasta que el scroll llega a un límite (ej. top: 0) y ahí se queda "pegado".
+     - z-index: Controla el orden de capas (qué elemento queda encima de cuál en el eje Z).
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lección 04 - Display y Posicionamiento</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+
+    .seccion {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    /* 
+      1. DEMOSTRACIÓN DE DISPLAY
+    */
+    .demo-inline {
+      display: inline;
+      background: #fbcfe8;
+      padding: 5px;
+      border: 1px solid #db2777;
+    }
+
+    .demo-inline-block {
+      display: inline-block;
+      width: 140px;
+      height: 60px;
+      background: #fed7aa;
+      border: 1px solid #ea580c;
+      text-align: center;
+      line-height: 60px;
+      margin: 5px;
+    }
+
+    .demo-block {
+      display: block;
+      background: #bbf7d0;
+      border: 1px solid #16a34a;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    /* 
+      2. DEMOSTRACIÓN DE POSITION: RELATIVE vs ABSOLUTE
+    */
+    .padre-relativo {
+      position: relative; /* ¡Punto de referencia para los hijos absolutos! */
+      width: 100%;
+      height: 160px;
+      background-color: #e0e7ff;
+      border: 2px dashed #4f46e5;
+      border-radius: 6px;
+      padding: 10px;
+      margin-top: 15px;
+    }
+
+    .hijo-absoluto {
+      position: absolute;
+      top: 15px;      /* A 15px de la parte superior del padre */
+      right: 15px;    /* A 15px del borde derecho del padre */
+      background-color: #ef4444;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .hijo-relativo-movido {
+      position: relative;
+      top: 20px;
+      left: 30px;
+      background-color: #3b82f6;
+      color: white;
+      padding: 8px;
+      width: fit-content;
+      border-radius: 4px;
+    }
+
+    /* 
+      3. DEMOSTRACIÓN DE POSITION: FIXED (Botón flotante en la esquina inferior derecha)
+    */
+    .boton-flotante-fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #10b981;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-weight: bold;
+      z-index: 999; /* Asegura que quede por encima de todo */
+      cursor: pointer;
+    }
+
+    .btn-nav {
+      display: inline-block;
+      margin-top: 15px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lección 04: Display y Posicionamiento</h1>
+
+  <!-- Botón fijo en la pantalla -->
+  <div class="boton-flotante-fixed">
+    💬 Ayuda (position: fixed)
+  </div>
+
+  <div class="seccion">
+    <h2>1. Modos de Display</h2>
+    <p>Texto con elemento <span class="demo-inline">inline (en línea)</span> fluyendo con el texto.</p>
+    <br>
+    <div>
+      <div class="demo-inline-block">Caja 1 (inline-block)</div>
+      <div class="demo-inline-block">Caja 2 (inline-block)</div>
+      <div class="demo-inline-block">Caja 3 (inline-block)</div>
+    </div>
+    <div class="demo-block">
+      📦 Esta caja es un <strong>display: block;</strong> ocupando todo el ancho disponible.
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>2. Posicionamiento: Relative y Absolute</h2>
+    <p>El contenedor padre tiene <code>position: relative</code>, y la insignia roja tiene <code>position: absolute; top: 15px; right: 15px;</code>.</p>
+    
+    <div class="padre-relativo">
+      <h3>Contenedor Padre (position: relative)</h3>
+      <span class="hijo-absoluto">🔥 ¡OFERTA! (position: absolute)</span>
+      <div class="hijo-relativo-movido">
+        Desplazado con relative (top: 20px; left: 30px;)
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <a class="btn-nav" href="03_modelo_de_cajas.html">⬅ Lección Anterior</a> | 
+  <a class="btn-nav" href="index.html">Menú Principal</a> | 
+  <a class="btn-nav" href="05_flexbox_unidimensional.html">Siguiente Lección: Flexbox ➡</a>
+
+</body>
+</html>
